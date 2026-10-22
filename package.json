@@ -1,0 +1,19 @@
+{
+  "name": "pokemon-showdown-auto",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "fetch-data": "node scripts/fetch-data.mjs",
+    "fetch-sprites": "node scripts/fetch-sprites.mjs",
+    "fetch-sounds": "node scripts/fetch-sounds.mjs",
+    "compendio": "esbuild scripts/gen-compendio.ts --bundle --platform=node --format=esm --define:import.meta.env.BASE_URL='\"/\"' --outfile=node_modules/.cache/gen-compendio.mjs --log-level=error && node node_modules/.cache/gen-compendio.mjs && chromium --headless --no-pdf-header-footer --print-to-pdf=docs/Kanto-Showdown-Compendio.pdf docs/compendio.html"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

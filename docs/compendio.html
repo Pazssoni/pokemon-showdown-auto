@@ -1,0 +1,1336 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Kanto Showdown — Compêndio</title>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600&family=Jersey+15&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 12mm 11mm; }
+body { font-family: 'DejaVu Sans', system-ui, sans-serif; color: #2b1d2b; font-size: 10.5pt; line-height: 1.35; margin: 0 auto; max-width: 1000px; padding: 0 14px; background: #fff; }
+h1 { font-family: 'Pixelify Sans', sans-serif; font-size: 34pt; color: #ffd23f; -webkit-text-stroke: 2px #2a4aa8; margin: 0; }
+.cover { text-align: center; padding: 26px 0 10px; border-bottom: 4px solid #2b1d2b; margin-bottom: 14px; }
+.cover p { margin: 4px 0; color: #555; }
+h2 { font-family: 'Pixelify Sans', sans-serif; background: #ff4d6d; color: #fff; padding: 5px 12px; border-radius: 6px; margin: 22px 0 10px; page-break-after: avoid; }
+h3 { color: #2a6fc0; margin: 14px 0 6px; page-break-after: avoid; }
+.toc { columns: 3; font-size: 11pt; }
+.toc a { color: #2a4aa8; text-decoration: none; }
+.cards { display: flex; gap: 10px; } .card { flex: 1; border: 2px solid #c3c7d4; border-radius: 6px; padding: 8px; background: #f8f9fc; }
+table { border-collapse: collapse; width: 100%; } .t td, .t th { border: 1px solid #d5d8e2; padding: 4px 6px; vertical-align: top; text-align: left; }
+.t th { background: #3a3346; color: #fff; } tr { page-break-inside: avoid; }
+.grp td { background: #f0f1f6; font-weight: bold; }
+.tc { display: inline-block; color: #fff; font-size: 8.5pt; padding: 0 6px; border-radius: 4px; text-shadow: 0 1px 0 #0006; margin: 1px 0; }
+.rar { font-weight: bold; }
+.ic img { width: 30px; height: 30px; image-rendering: pixelated; } .ic img.tr { width: 56px; height: 56px; }
+.line { border: 1px solid #d5d8e2; border-left: 6px solid; border-radius: 6px; margin: 8px 0; padding: 4px 8px; page-break-inside: avoid; }
+.line-head { font-weight: bold; font-size: 11pt; } .line-head small { font-weight: normal; color: #6b6f80; }
+.evo { color: #2a6fc0; font-size: 9.5pt; }
+.dex td { padding: 3px 5px; vertical-align: middle; border-top: 1px dashed #e3e5ee; font-size: 9.5pt; }
+.dex .spr { width: 112px; white-space: nowrap; } .dex .spr img { height: 48px; image-rendering: pixelated; } .dex .spr img.sh { height: 34px; opacity: .9; }
+.dex .nm { width: 150px; } .dex .st { width: 210px; } .dex .ab .shab { color: #8a6a00; margin-top: 3px; }
+.k-dmg { color: #e8435a; } .k-heal { color: #2e86d6; } .k-shield { color: #c98a12; } .k-burn { color: #f07a14; } .k-poison { color: #9b3fc6; } .k-shock { color: #b39400; } .k-multi { color: #5a6fae; }
+.formula { font-family: monospace; background: #f0f1f6; padding: 6px 10px; border-radius: 6px; }
+.flow li { margin: 4px 0; } .ev { border: 1px solid #d5d8e2; border-radius: 6px; padding: 6px 10px; margin: 6px 0; page-break-inside: avoid; } .ev p { margin: 2px 0; }
+small { color: #6b6f80; }
+</style></head><body>
+<div class="cover"><h1>KANTO SHOWDOWN</h1><p><b>Compêndio completo</b> — gerado automaticamente a partir do código do jogo</p>
+<p>188 espécies · 137 habilidades únicas · 88 itens segurados · 29 itens · 30 treinadores · 21 encontros</p></div>
+<div class="toc"><div>1. <a href="#visao">Visão geral</a></div><div>2. <a href="#ciclo">Ciclo de gameplay</a></div><div>3. <a href="#economia">Economia e loja</a></div><div>4. <a href="#fusao">Fusão e evolução</a></div><div>5. <a href="#batalha">Batalha e escalonamento</a></div><div>6. <a href="#tipos">Tipos e orçamento</a></div><div>7. <a href="#pokedex">Pokédex completa</a></div><div>8. <a href="#itens-seg">Itens segurados</a></div><div>9. <a href="#itens">Itens da loja</a></div><div>10. <a href="#treinadores">Treinadores</a></div><div>11. <a href="#encontros">Encontros</a></div><div>12. <a href="#combos">Combos e balanceamento</a></div></div>
+<section id="visao"><h2>1. Visão geral</h2>
+<p><b>Kanto Showdown</b> é um auto battler de navegador inspirado no <i>Batomon Showdown</i>, adaptado aos Pokémon:
+os <b>151 de Kanto</b>, a <b>família de Johto</b> ligada a eles e as <b>evoluções e bebês das gerações seguintes</b> (Magnezone, Rhyperior, Sylveon, Kleavor, Annihilape…), totalizando <b>188 espécies</b>.
+Cada <b>tipo tem uma mecânica própria</b> (Queimadura, Choque, Frio, Eco, Bênção…) e os números escalam sem teto: no Modo Infinito eles chegam aos milhões.
+Você monta uma equipe na loja, posiciona num grid 2×3 e assiste à batalha automática contra times de outros treinadores (gerados ou "fantasmas" de runs suas).</p>
+<div class="cards">
+  <div class="card"><b>Objetivo</b><br>10 vitórias antes de perder os 10 corações. Depois disso, opcionalmente, Modo Infinito.</div>
+  <div class="card"><b>Equipe</b><br>6 vagas na Equipe (grid 2×3, coluna da direita = frente) e 4 no PC (banco, não luta).</div>
+  <div class="card"><b>Conteúdo</b><br>188 espécies · 137 habilidades únicas · 48 versões shiny especiais · 88 itens segurados · 29 itens · 30 treinadores · 21 encontros.</div>
+</div></section>
+<section id="ciclo"><h2>2. Ciclo de gameplay (um dia)</h2>
+<ol class="flow">
+<li><b>Início do dia</b> — renda entra (base + juros + bônus), ovos chocam, efeitos de treinador e de "início do dia" disparam (Chef de Celadon dá um tipo aleatório), a loja é sorteada (se não estava travada) e o rival do dia é gerado.</li>
+<li><b>Fila de telas</b> — antes da loja aparecem, em ordem: prêmios de itens segurados pendentes, Segunda Chance (Enfermeira Joy), Planalto Indigo, o encontro do dia (dias 3, 6 e 9) e a escolha da Infusão de Tipo.</li>
+<li><b>Loja</b> — comprar/vender Pokémon, usar 1 item por dia, renovar (reroll) a loja, travar a loja para o dia seguinte, posicionar a equipe. Fusões acontecem automaticamente.</li>
+<li><b>Pré-batalha</b> — Master Ball, itens segurados de evolução (Eletrizador, Magmarizador, Protetor, Disco Duvidoso, King's Rock, Revestimento Metálico) e evoluções por contador.</li>
+<li><b>VS → Batalha automática</b> — cada Pokémon ataca quando sua recarga enche; o dano vai para o HP compartilhado do time inimigo.</li>
+<li><b>Resultado</b> — vitória: +1 insígnia e um <b>prêmio de item segurado (escolha 1 de 3)</b>. Derrota: perde corações (1 nos dias 1–3, 2 nos dias 4–6, 3 a partir do 7). Medidor de dano (dano, cura, escudo, status, maior golpe da batalha e da run) e log expansível. Contadores de evolução avançam (batalhas, vitórias, derrotas, ouro, nocautes, críticos, ataques, Queimadura/Choque/Frio/Veneno aplicados e Escudo recebido pelo time).</li>
+<li><b>Próximo dia</b>.</li>
+</ol>
+<h3>Eventos especiais</h3>
+<ul>
+<li><b>Encontros</b> nos dias 3, 6 e 9: um evento temático com 3 escolhas.</li>
+<li><b>Segunda Chance</b> (1× por run): ao cair para ≤3 corações após uma derrota, a Enfermeira Joy dá +1 ❤ e um prêmio.</li>
+<li><b>Planalto Indigo</b>: com 9 vitórias, escolha um reforço para a batalha final.</li>
+<li><b>Prêmio de fusão</b>: sempre que um Pokémon chega ao Lv3, ganha-se um prêmio de item segurado da raridade dele.</li>
+<li><b>Modo Infinito</b>: após ser campeão, continua com o mesmo time até perder todos os corações; o HP dos rivais cresce ×1,6 por dia.</li>
+<li><b>Ranked</b>: vencer um time fantasma dá +25 de MMR e perder tira 20. Divisões: Poké Ball (&lt;1100) → Grande (1100) → Ultra (1300) → Master (1500). Os fantasmas são escolhidos com peso para MMR próximo do seu.</li>
+<li><b>Resumo da run</b>: ao fim, o botão "Salvar imagem" gera um PNG com o time, as vitórias, o maior golpe e a divisão.</li>
+</ul></section>
+<section id="economia"><h2>3. Economia e loja</h2>
+<table class="t">
+<tr><th>Item</th><th>Regra</th></tr>
+<tr><td>Dinheiro inicial</td><td>₽30 (+₽10 com a Lady)</td></tr>
+<tr><td>Renda diária</td><td>₽25 + ₽3 × dia (máx. ₽55) + juros + bônus de itens/treinador</td></tr>
+<tr><td>Juros</td><td>+₽1 a cada ₽10 guardados (máx. ₽5). Coin Case dobra.</td></tr>
+<tr><td>Renovar loja</td><td>₽3 (rerolls grátis: Youngster 3/dia, Bicicleta 1/dia, Refrigerante, Pokémaníaco)</td></tr>
+<tr><td>Travar</td><td>Mantém a loja atual para o dia seguinte</td></tr>
+<tr><td>Itens</td><td>1 item por dia (Cartão-Chave e alguns itens liberam mais). Usados na hora, com alvo automático — exceto o <b>TM de Tipo</b>, o único item com alvo escolhido.</td></tr>
+<tr><td>Venda</td><td>Metade do preço × cópias equivalentes (Lv1 = 1, Lv2 = 3, Lv3 = 6, Lv4 = 12, Lv5 = 24; Magikarp conta 5 cópias no Lv2) + bônus de shiny</td></tr>
+<tr><td>Slots da loja</td><td>4 Pokémon + 1 item</td></tr>
+<tr><td>Shiny na loja</td><td>4% de chance (16% com a Beauty), +₽5</td></tr>
+<tr><td>Região</td><td>Cada run sorteia ~38 linhas (7 Comuns, 12 Incomuns, 10 Raras, 5 Super Raras, 3 Lendárias, 1 Mítica) para que as fusões sejam viáveis. 25% das vezes a loja oferece uma linha que você já tem.</td></tr>
+</table>
+<h3>Preço por raridade (só primeiros estágios são vendidos)</h3>
+<table class="t"><tr><th><span class="rar" style="color:#8e9aa6">Comum</span></th><th><span class="rar" style="color:#5cb85c">Incomum</span></th><th><span class="rar" style="color:#3d8fd6">Raro</span></th><th><span class="rar" style="color:#9b5bd6">Super Raro</span></th><th><span class="rar" style="color:#f08a24">Lendário</span></th><th><span class="rar" style="color:#e8435a">Mítico</span></th></tr>
+<tr><td>₽10<br><small>7 linhas</small></td><td>₽18<br><small>25 linhas</small></td><td>₽28<br><small>31 linhas</small></td><td>₽40<br><small>7 linhas</small></td><td>₽60<br><small>4 linhas</small></td><td>₽80<br><small>1 linhas</small></td></tr></table>
+<h3>Chances por nível do Mart (sobe 1 por dia, mais bônus)</h3>
+<table class="t"><tr><th>Mart Nv.</th><th><span class="rar" style="color:#8e9aa6">Comum</span></th><th><span class="rar" style="color:#5cb85c">Incomum</span></th><th><span class="rar" style="color:#3d8fd6">Raro</span></th><th><span class="rar" style="color:#9b5bd6">Super Raro</span></th><th><span class="rar" style="color:#f08a24">Lendário</span></th><th><span class="rar" style="color:#e8435a">Mítico</span></th></tr>
+<tr><td>1</td><td>100%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td></tr><tr><td>2</td><td>75%</td><td>25%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td></tr><tr><td>3</td><td>60%</td><td>32%</td><td>8%</td><td>0%</td><td>0%</td><td>0%</td></tr><tr><td>4</td><td>48%</td><td>35%</td><td>15%</td><td>2%</td><td>0%</td><td>0%</td></tr><tr><td>5</td><td>38%</td><td>35%</td><td>20%</td><td>6%</td><td>1%</td><td>0%</td></tr><tr><td>6</td><td>30%</td><td>32%</td><td>25%</td><td>10%</td><td>3%</td><td>0%</td></tr><tr><td>7</td><td>22%</td><td>30%</td><td>28%</td><td>14%</td><td>5%</td><td>1%</td></tr><tr><td>8</td><td>16%</td><td>26%</td><td>30%</td><td>18%</td><td>8%</td><td>2%</td></tr><tr><td>9</td><td>12%</td><td>22%</td><td>30%</td><td>22%</td><td>11%</td><td>3%</td></tr><tr><td>10</td><td>8%</td><td>18%</td><td>30%</td><td>26%</td><td>14%</td><td>4%</td></tr></table></section>
+<section id="fusao"><h2>4. Fusão, níveis e evolução</h2>
+<ul>
+<li><b>3 cópias Lv1 → 1 Lv2</b>; <b>2 Lv2 → 1 Lv3</b>; <b>2 Lv3 → 1 Lv4</b>. Automático ao comprar/receber (conta Equipe + PC). Magikarp precisa de <b>5</b> cópias. <b>Nível máximo 4</b>; só o Poliwrath chega ao Lv5 (sobe a cada vitória).</li>
+<li><b>Multiplicador por nível</b> (stats e todos os números de habilidade): Lv1 ×1 · Lv2 ×2 · Lv3 ×4 · Lv4 ×8 · Lv5 ×16.</li>
+<li>A fusão herda shiny, <b>todos os tipos extras</b> e o maior bônus permanente de cada stat.</li>
+<li><b>Evolução troca a espécie sem mudar o nível.</b> Linhas de 3 estágios evoluem no Lv2 e no Lv3; linhas de 2 estágios no Lv3 (Magmar, Electabuzz e Rhydon evoluem no Lv2 e chegam à forma da Gen 4 no Lv3).</li>
+<li><b>Bebês</b> (Pichu, Cleffa, Igglybuff, Tyrogue, Smoochum, Elekid, Magby, Mime Jr., Happiny, Munchlax) entram na loja como primeiro estágio.</li>
+<li><b>Contadores do time</b> (mostrados na ficha): Magby ×25 Queimaduras, Elekid ×25 Choques, Smoochum ×25 Frios, Grimer ×40 Venenos, Geodude e Onix ×20 Escudos recebidos. Outros: Meowth ₽12 de Pay Day (Perrserker se estiver ao lado de um Aço), Mankey 60 ataques → Annihilape, Farfetch'd 20 críticos → Sirfetch'd, Psyduck 4 batalhas, Cubone 3 aliados nocauteados, Slowpoke ao lado de Shellder.</li>
+<li><b>Eevee</b>: pedras (Água, Trovão, Fogo, Folha → Leafeon, Gelo → Glaceon), 3 vitórias (Espeon), 2 derrotas (Umbreon), 15 de Bênção no time (Sylveon); no Lv3 vira a evolução do <b>tipo mais comum do time</b> (empate: sorteio).</li>
+<li><b>Tyrogue</b>: frente → Hitmonlee, meio → Hitmontop, trás → Hitmonchan. <b>Mr. Mime</b> → Mr. Rime no Lv3.</li>
+<li><b>Itens segurados de evolução</b> (antecipam no início da próxima batalha): Eletrizador (Electabuzz → Electivire) · Magmarizador (Magmar → Magmortar) · Protetor (Rhydon → Rhyperior) · Disco Duvidoso (Porygon2 → Porygon-Z) · Revestimento Metálico (Onix → Steelix, Scyther → Scizor) · King's Rock (Slowpoke → Slowking, Poliwhirl → Politoed).</li>
+<li><b>Pedras</b>: Pedra d'Água: Eevee→Vaporeon, Shellder→Cloyster, Staryu→Starmie, Poliwhirl→Poliwrath · Pedra do Trovão: Eevee→Jolteon, Pikachu→Raichu · Pedra de Fogo: Eevee→Flareon, Vulpix→Ninetales, Growlithe→Arcanine · Pedra da Folha: Eevee→Leafeon, Exeggcute→Exeggutor, Gloom→Vileplume · Pedra do Gelo: Eevee→Glaceon · Pedra da Lua: Clefairy→Clefable, Jigglypuff→Wigglytuff, Nidorina→Nidoqueen, Nidorino→Nidoking · Pedra do Sol: Gloom→Bellossom · Augurita Negra: Scyther→Kleavor.</li>
+</ul></section>
+<section id="batalha"><h2>5. Batalha e escalonamento</h2>
+<table class="t">
+<tr><th>Conceito</th><th>Como funciona</th></tr>
+<tr><td>HP do time</td><td>Compartilhado: 150 base + HP de cada Pokémon da equipe + bônus. Perde quem zerar primeiro.</td></tr>
+<tr><td>Recarga</td><td>Cada Pokémon ataca quando a barra enche. Sem teto de velocidade: o piso é 0,2s e cada +100% de velocidade além do piso vira +1 Multicast.</td></tr>
+<tr><td>Multicast</td><td>Golpes por ataque, todos com dano cheio. Efeitos "ao atacar" disparam 1 vez por ativação.</td></tr>
+<tr><td class="k-burn">Queimadura</td><td>A cada 0,5s causa dano igual aos acúmulos e perde 1.</td></tr>
+<tr><td class="k-poison">Veneno</td><td>A cada 1s causa dano igual aos acúmulos, sem diminuir. Não ignora mais o Escudo.</td></tr>
+<tr><td class="k-shock">Choque</td><td>Cada golpe direto recebido causa +acúmulos de dano. Não diminui.</td></tr>
+<tr><td class="k-shock">Frio</td><td>A velocidade de recarga inimiga é multiplicada por 1/(1+0,02×Frio). Perde 1 por segundo.</td></tr>
+<tr><td class="k-shield">Escudo</td><td>Absorve dano antes do HP, sem teto. Status perde 15% ao bater no Escudo. Perfurar (Terra) causa 2x contra Escudo.</td></tr>
+<tr><td class="k-shield">Armadura</td><td>Reduz cada golpe direto e de Choque (mínimo 1). Não afeta Queimadura e Veneno. Perfurar e Dano Espectral ignoram.</td></tr>
+<tr><td>Nocaute</td><td>Só por habilidade. <b>Proteger</b> anula um nocaute. Nocaute sem alvo cai no inimigo mais próximo da linha e depois em qualquer inimigo.</td></tr>
+<tr><td>Desativar</td><td>Um Pokémon desativado não ativa habilidades pelo tempo indicado.</td></tr>
+<tr><td>Fadiga</td><td>Após 30s o dano cresce 8%/s. Após 45s cada time perde 2% do HP máximo por segundo (+1% a cada 5s), ignorando Escudo e Armadura. Aos 75s vence quem tiver mais HP%.</td></tr>
+<tr><td>Posições</td><td>Frente = coluna da direita. "Atrás" = coluna anterior; "acima/abaixo" = mesma coluna na outra linha; adjacentes = frente+trás+acima/abaixo; "oposto" = o inimigo espelhado.</td></tr>
+</table>
+<h3>Ordem de cálculo (sem teto)</h3>
+<p class="formula"><b>(base + aditivos permanentes + aditivos da batalha) × (1 + Σ%) × Π multiplicadores × nível</b></p>
+<p>São <b>multiplicadores</b> (não somam entre si): itens Raros ou melhores de "×X" (Lente de Mira, Osso Grosso, Placas), Presa de Dragão (×1,3), Escama de Dragão (×1,6), Joia Misteriosa (×1,2), todos os % de Dano recebidos por Dragões e o Crítico. Os multiplicadores de item valem para o Dano e para os números de efeito (Cura, Escudo, status). Os números aparecem como K / M / B / T e, acima de 1e15, em notação científica.</p>
+<h3>Três camadas de crescimento</h3>
+<ol><li><b>Permanente</b> (entre batalhas): fusão e nível ×2, bônus permanentes de habilidades/itens, Bênção da Fada.</li>
+<li><b>Na batalha</b>: buffs "nesta batalha", Crescimento (Planta), Multicast extra, Carga.</li>
+<li><b>Multiplicadores</b>: itens Raros+, Dragão, Crítico, Punir e fadiga.</li></ol>
+<h3>Gatilhos de habilidade</h3>
+<p>Ao atacar · Início da batalha · Contínuo · Na vitória · Na derrota · Ao comprar · Depois de comprar um Pokémon X · Início do dia · Quando um aliado ataca · Ao ser nocauteado · Quando qualquer Pokémon é nocauteado · A cada N segundos · Quando o time recebe Escudo · <b>Quando você usa um item</b> · <b>Quando você ganha um item segurado</b> · Primeiro ataque / a cada N ataques. Palavras-chave: <b>Proteger</b>, <b>Desativar</b>.</p>
+<h3>Shiny</h3>
+<p>Todo shiny tem +20% no orçamento e nos números da habilidade. 48 espécies têm uma <b>versão ★ aprimorada própria</b>, incluindo todas as das gerações 4 em diante.</p>
+<h3>Rivais</h3>
+<p>O HP dos rivais gerados segue uma curva por dia (d1 1930 · d2 3680 · d3 6070 · d4 8100 · d5 10.2K · d6 12.8K · d7 14.8K · d8 17.3K · d9 20.9K · d10 25.2K; ×1,6 por dia no Infinito) e o poder ofensivo escala com a mesma curva elevada a 0,75.</p></section>
+<section id="tipos"><h2>6. Tipos e orçamento</h2>
+<p><b>Não existe mais sinergia.</b> Cada tipo dá uma <b>mecânica própria</b>; tipos duplos e triplos somam as mecânicas. Muitos Pokémon ficam com Dano 0 e vencem pela mecânica.</p>
+<p><b>Orçamento</b> = base da raridade (100 / 130 / 170 / 220 / 300 / 360) × estágio (bebê 0,8 · 1º 1,0 · 2º 1,35 · 3º 1,7 · evolução da Gen 4+ 2,0) × BST / BST médio da raridade. Divisão entre os tipos: 100% · 65%/35% · 50%/30%/20%. Recarga e HP (6.4/pt) saem do orçamento. Um <b>tipo ganho</b> (TM de Tipo, Criador Pokémon, Chef de Celadon, Infusão de Tipo, Conversão, Adaptável, Ancestral) dá +35% do orçamento no stat daquele tipo; máximo de 3 tipos.</p>
+<p><b>Taxas de câmbio</b> calibradas pelo bot: um Pokémon "puro" de cada tipo entra num time de Normais e a taxa é ajustada até a vitória ficar em 50% contra 3 Normais (Lv1, Lv2 e Lv3), ou seja, 1 ponto vale o mesmo numa luta padrão de 30s. Depois, um <b>ajuste fino por tipo</b> (multiplicador do orçamento do tipo) foi afinado com runs completas.</p>
+<table class="t"><tr><th>Tipo</th><th>Mecânica</th><th>Taxa (por ponto de orçamento)</th><th>Ajuste</th><th>Espécies</th></tr>
+<tr><td><span class="tc" style="background:#a8a77a">Normal</span></td><td>Dano + HP do time. O tipo que mais dá HP.</td><td><small>70% Dano (0.35/pt) + 30% HP (12/pt)</small></td><td>×1.9</td><td>29</td></tr><tr><td><span class="tc" style="background:#ee8130">Fogo</span></td><td>Queimadura: a cada 0,5s causa dano igual aos acúmulos e perde 1.</td><td><small>Queimadura 0.026/pt</small></td><td>×3</td><td>14</td></tr><tr><td><span class="tc" style="background:#6390f0">Água</span></td><td>Cura + Limpeza: cura o time e remove N% dos status negativos do próprio time a cada ativação.</td><td><small>80% Cura (0.546/pt) + Limpeza 0.06%/pt</small></td><td>×0.6</td><td>35</td></tr><tr><td><span class="tc" style="background:#f7d02c">Elétrico</span></td><td>Choque: cada golpe direto recebido pelo inimigo causa +acúmulos de dano. Não decai.</td><td><small>Choque 0.0265/pt</small></td><td>×0.64</td><td>13</td></tr><tr><td><span class="tc" style="background:#7ac74c">Planta</span></td><td>Crescimento: ao atacar, ganha +N% em todos os seus stats nesta batalha (acumula).</td><td><small>Crescimento 0.058%/pt</small></td><td>×3</td><td>17</td></tr><tr><td><span class="tc" style="background:#96d9d6">Gelo</span></td><td>Frio: acúmulos no inimigo deixam a recarga dele mais lenta (÷(1 + 2% por acúmulo)). Perde 1 por segundo.</td><td><small>Frio 0.022/pt</small></td><td>×0.4</td><td>8</td></tr><tr><td><span class="tc" style="background:#c22e28">Lutador</span></td><td>Dano + Crítico: N% de chance de causar 2x (acima de 100%, o multiplicador sobe).</td><td><small>60% Dano + 40% Crítico (0.52%/pt)</small></td><td>×1.95</td><td>12</td></tr><tr><td><span class="tc" style="background:#a33ea1">Veneno</span></td><td>Veneno: a cada 1s causa dano igual aos acúmulos. Não decai.</td><td><small>Veneno 0.012/pt</small></td><td>×3</td><td>34</td></tr><tr><td><span class="tc" style="background:#e2bf65">Terra</span></td><td>Dano + Perfurar: causa 2x contra Escudo e ignora Armadura.</td><td><small>Dano 0.35/pt + Perfurar 2x</small></td><td>×3</td><td>16</td></tr><tr><td><span class="tc" style="background:#a98ff3">Voador</span></td><td>Carga: ao atacar, adianta a recarga do aliado atrás em Carga×0,1s (e a própria pela metade).</td><td><small>Carga 0.057/pt</small></td><td>×0.2</td><td>20</td></tr><tr><td><span class="tc" style="background:#f95587">Psíquico</span></td><td>Eco: N% de chance de ativar um aliado aleatório ao atacar (cada 100% garante 1).</td><td><small>Eco 0.27%/pt</small></td><td>×0.6</td><td>19</td></tr><tr><td><span class="tc" style="background:#a6b91a">Inseto</span></td><td>Multicast + Enxame: +N de Dano por Inseto no time; muitos golpes pequenos.</td><td><small>Enxame 0.167/pt + Multicast 2</small></td><td>×0.3</td><td>14</td></tr><tr><td><span class="tc" style="background:#b6a136">Pedra</span></td><td>Escudo para o time.</td><td><small>Escudo 0.428/pt</small></td><td>×2.8</td><td>13</td></tr><tr><td><span class="tc" style="background:#735797">Fantasma</span></td><td>Dano Espectral: ignora Escudo e Armadura.</td><td><small>Dano Espectral 0.33/pt</small></td><td>×2.5</td><td>4</td></tr><tr><td><span class="tc" style="background:#6f35fc">Dragão</span></td><td>Dano muito alto, recarga lenta. Todo bônus % de Dano de um Dragão é MULTIPLICATIVO.</td><td><small>Dano 0.35/pt, recarga ×1,6</small></td><td>×1.9</td><td>4</td></tr><tr><td><span class="tc" style="background:#8f95b2">Aço</span></td><td>Armadura (reduz cada golpe direto e de Choque recebido) + um pouco de Escudo.</td><td><small>70% Armadura (0.14/pt) + 30% Escudo</small></td><td>×2</td><td>6</td></tr><tr><td><span class="tc" style="background:#5a4636">Sombrio</span></td><td>Dano + Punir: +N% de dano por golpe para cada 10 acúmulos de status no inimigo.</td><td><small>50% Dano + 50% Punir (0.3%/pt)</small></td><td>×1.9</td><td>1</td></tr><tr><td><span class="tc" style="background:#d685ad">Fada</span></td><td>Bênção: início da batalha, os aliados adjacentes ganham +N em todos os stats que já têm, PERMANENTEMENTE.</td><td><small>Bênção 0.162/pt</small></td><td>×0.4</td><td>9</td></tr>
+</table>
+<h3>Teia de contras</h3>
+<p>Água limpa Queimadura, Veneno, Choque e Frio do próprio time · Escudo (Pedra) corta 15% de todo status · Terra perfura Escudo e Armadura · Fantasma ignora Escudo e Armadura · Armadura (Aço) anula golpes pequenos e Multicast · Sombrio pune times que acumulam status · Frio desacelera times de recarga rápida.</p>
+<h3>Tipagem moderna (Gen 6+)</h3>
+<p>Clefairy, Clefable e Cleffa são Fada; Jigglypuff, Wigglytuff e Igglybuff são Normal/Fada; Mr. Mime e Mime Jr. são Psíquico/Fada; Magnemite e Magneton são Elétrico/Aço; Farfetch'd é Normal/Voador.</p></section>
+<section id="pokedex"><h2>7. Pokédex completa (188 espécies, stats no Lv1)</h2><p>Stats no Lv1, sem bônus. Multiplique por 2 (Lv2), 4 (Lv3), 8 (Lv4) ou 16 (Lv5). Primeira coluna: sprite normal e shiny. ★ = versão shiny aprimorada.</p><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Bulbasaur → Ivysaur → Venusaur <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Ivysaur no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/1.gif"><img class="sh" src="../public/sprites/pokemon/shiny/1.gif"></td>
+    <td class="nm"><b>#001 Bulbasaur</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-heal">Cresc. 14%</b><br><small>Orçamento 124 · Recarga 3.5s · HP do time +794</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Semente ★</b> — Ao atacar: +2 Crescimento nesta batalha.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/2.gif"><img class="sh" src="../public/sprites/pokemon/shiny/2.gif"></td>
+    <td class="nm"><b>#002 Ivysaur</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 3</b> · <b class="k-heal">Cresc. 24.1%</b><br><small>Orçamento 213 · Recarga 3.2s · HP do time +1363</small></td>
+    <td class="ab"><b>Semente Sanguessuga</b> — Ao atacar: cura o time em 30% do Veneno no inimigo.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/3.gif"><img class="sh" src="../public/sprites/pokemon/shiny/3.gif"></td>
+    <td class="nm"><b>#003 Venusaur</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 4</b> · <b class="k-heal">Cresc. 39.2%</b><br><small>Orçamento 347 · Recarga 2.7s · HP do time +2221</small></td>
+    <td class="ab"><b>Fotossíntese</b> — A cada 3s: o time cura 30 e este ganha +4 Crescimento nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Charmander → Charmeleon → Charizard <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Charmeleon no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/4.gif"><img class="sh" src="../public/sprites/pokemon/shiny/4.gif"></td>
+    <td class="nm"><b>#004 Charmander</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 9</b><br><small>Orçamento 120 · Recarga 3.0s · HP do time +768</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Faísca ★</b> — Ao atacar: +1 Queimadura nesta batalha.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/5.gif"><img class="sh" src="../public/sprites/pokemon/shiny/5.gif"></td>
+    <td class="nm"><b>#005 Charmeleon</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 15</b><br><small>Orçamento 213 · Recarga 2.7s · HP do time +1363</small></td>
+    <td class="ab"><b>Brasa</b> — Ao atacar: +1 Queimadura nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/6.gif"><img class="sh" src="../public/sprites/pokemon/shiny/6.gif"></td>
+    <td class="nm"><b>#006 Charizard</b><br><span class="tc" style="background:#ee8130">Fogo</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-burn">Queim. 13</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 353 · Recarga 2.2s · HP do time +2259</small></td>
+    <td class="ab"><b>Asas de Fogo</b> — Ao atacar: o aliado atrás ganha +2 Queimadura nesta batalha e é carregado em 0.5s.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Squirtle → Wartortle → Blastoise <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Wartortle no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/7.gif"><img class="sh" src="../public/sprites/pokemon/shiny/7.gif"></td>
+    <td class="nm"><b>#007 Squirtle</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 38</b> · <b class="k-heal">Limpeza 4.4%</b><br><small>Orçamento 122 · Recarga 3.6s · HP do time +781</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Bolhas ★</b> — Ao atacar: +5 Cura nesta batalha.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/8.gif"><img class="sh" src="../public/sprites/pokemon/shiny/8.gif"></td>
+    <td class="nm"><b>#008 Wartortle</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 60</b> · <b class="k-heal">Limpeza 7.7%</b><br><small>Orçamento 213 · Recarga 3.2s · HP do time +1363</small></td>
+    <td class="ab"><b>Casco Firme</b> — Início da batalha: o time ganha Escudo igual a 2x a Cura dos aliados adjacentes.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/9.gif"><img class="sh" src="../public/sprites/pokemon/shiny/9.gif"></td>
+    <td class="nm"><b>#009 Blastoise</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 84</b> · <b class="k-heal">Limpeza 12.6%</b><br><small>Orçamento 351 · Recarga 2.7s · HP do time +2246</small></td>
+    <td class="ab"><b>Hidro Canhão</b> — Contínuo: aliados de Água adjacentes têm +20 Cura e +5 Limpeza.</td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Caterpie → Metapod → Butterfree <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Metapod no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/10.gif"><img class="sh" src="../public/sprites/pokemon/shiny/10.gif"></td>
+    <td class="nm"><b>#010 Caterpie</b><br><span class="tc" style="background:#a6b91a">Inseto</span></td>
+    <td class="st"><b class="k-dmg">Enxame 4</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 62 · Recarga 3.5s · HP do time +397</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/11.gif"><img class="sh" src="../public/sprites/pokemon/shiny/11.gif"></td>
+    <td class="nm"><b>#011 Metapod</b><br><span class="tc" style="background:#a6b91a">Inseto</span></td>
+    <td class="st"><b class="k-dmg">Enxame 6</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 88 · Recarga 3.9s · HP do time +563</small></td>
+    <td class="ab"><b>Endurecer</b> — Ao atacar: +8 Escudo nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/12.gif"><img class="sh" src="../public/sprites/pokemon/shiny/12.gif"></td>
+    <td class="nm"><b>#012 Butterfree</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-multi">Carga 1</b> · <b class="k-dmg">Enxame 7</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 213 · Recarga 2.9s · HP do time +1363</small></td>
+    <td class="ab"><b>Pó do Sono</b> — Ao atacar: atrasa os inimigos da linha em 0.5s. Contínuo: aliados Inseto têm +2 Carga.</td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Weedle → Kakuna → Beedrill <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Kakuna no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/13.gif"><img class="sh" src="../public/sprites/pokemon/shiny/13.gif"></td>
+    <td class="nm"><b>#013 Weedle</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 1</b> · <b class="k-dmg">Enxame 2</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 62 · Recarga 3.4s · HP do time +397</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Ferrão ★</b> — Ao atacar: +1 Veneno nesta batalha.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/14.gif"><img class="sh" src="../public/sprites/pokemon/shiny/14.gif"></td>
+    <td class="nm"><b>#014 Kakuna</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 1</b> · <b class="k-dmg">Enxame 4</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 88 · Recarga 3.8s · HP do time +563</small></td>
+    <td class="ab"><b>Casulo</b> — Início da batalha: o time ganha 30 de Escudo por aliado Inseto.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/15.gif"><img class="sh" src="../public/sprites/pokemon/shiny/15.gif"></td>
+    <td class="nm"><b>#015 Beedrill</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 5</b> · <b class="k-dmg">Enxame 6</b> · <b class="k-multi">Multicast 3</b><br><small>Orçamento 213 · Recarga 2.8s · HP do time +1363</small></td>
+    <td class="ab"><b>Agulha Dupla</b> — Contínuo: Multicast +1. Cada golpe aplica +2 Veneno.<div class="shab">★ <b>Agulha Dupla ★</b> — Contínuo: Multicast +3. Cada golpe aplica +1 Veneno.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Pidgey → Pidgeotto → Pidgeot <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Pidgeotto no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/16.gif"><img class="sh" src="../public/sprites/pokemon/shiny/16.gif"></td>
+    <td class="nm"><b>#016 Pidgey</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 26</b> · <b class="k-multi">Carga 0</b><br><small>Orçamento 80 · Recarga 3.3s · HP do time +868</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/17.gif"><img class="sh" src="../public/sprites/pokemon/shiny/17.gif"></td>
+    <td class="nm"><b>#017 Pidgeotto</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 44</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 149 · Recarga 2.9s · HP do time +1616</small></td>
+    <td class="ab"><b>Ataque Rápido</b> — Início da batalha: ataca imediatamente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/18.gif"><img class="sh" src="../public/sprites/pokemon/shiny/18.gif"></td>
+    <td class="nm"><b>#018 Pidgeot</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 57</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 258 · Recarga 2.2s · HP do time +2798</small></td>
+    <td class="ab"><b>Vendaval</b> — Ao atacar: carrega todos os aliados Voadores em 0.2s.</td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Rattata → Raticate <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Raticate no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/19.gif"><img class="sh" src="../public/sprites/pokemon/shiny/19.gif"></td>
+    <td class="nm"><b>#019 Rattata</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 36</b><br><small>Orçamento 80 · Recarga 2.9s · HP do time +1059</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/20.gif"><img class="sh" src="../public/sprites/pokemon/shiny/20.gif"></td>
+    <td class="nm"><b>#020 Raticate</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 62</b><br><small>Orçamento 177 · Recarga 2.3s · HP do time +2343</small></td>
+    <td class="ab"><b>Hiper Presa</b> — Depois que você compra um Pokémon de Normal: ganha +5 Dano permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Spearow → Fearow <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Fearow no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/21.gif"><img class="sh" src="../public/sprites/pokemon/shiny/21.gif"></td>
+    <td class="nm"><b>#021 Spearow</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 26</b> · <b class="k-multi">Carga 0</b><br><small>Orçamento 88 · Recarga 2.9s · HP do time +954</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/22.gif"><img class="sh" src="../public/sprites/pokemon/shiny/22.gif"></td>
+    <td class="nm"><b>#022 Fearow</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 45</b> · <b class="k-multi">Carga 3</b><br><small>Orçamento 201 · Recarga 2.2s · HP do time +2180</small></td>
+    <td class="ab"><b>Bando</b> — Contínuo: +2 Carga para cada Voador na equipe.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Ekans → Arbok <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Arbok no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/23.gif"><img class="sh" src="../public/sprites/pokemon/shiny/23.gif"></td>
+    <td class="nm"><b>#023 Ekans</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 4</b><br><small>Orçamento 97 · Recarga 3.3s · HP do time +621</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/24.gif"><img class="sh" src="../public/sprites/pokemon/shiny/24.gif"></td>
+    <td class="nm"><b>#024 Arbok</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 7</b><br><small>Orçamento 204 · Recarga 2.7s · HP do time +1306</small></td>
+    <td class="ab"><b>Olhar Paralisante</b> — Início da batalha: Desativa o inimigo oposto por 3s e ganha +10 Punir nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Sandshrew → Sandslash <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Sandslash no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/27.gif"><img class="sh" src="../public/sprites/pokemon/shiny/27.gif"></td>
+    <td class="nm"><b>#027 Sandshrew</b><br><span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 129</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 101 · Recarga 3.6s · HP do time +646</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/28.gif"><img class="sh" src="../public/sprites/pokemon/shiny/28.gif"></td>
+    <td class="nm"><b>#028 Sandslash</b><br><span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 218</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 205 · Recarga 3.0s · HP do time +1312</small></td>
+    <td class="ab"><b>Areia Afiada</b> — Quando o time recebe Escudo: ganha Dano igual a 15% do escudo nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Nidoran♀ → Nidorina → Nidoqueen <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Nidorina no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/29.gif"><img class="sh" src="../public/sprites/pokemon/shiny/29.gif"></td>
+    <td class="nm"><b>#029 Nidoran♀</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 4</b><br><small>Orçamento 93 · Recarga 3.6s · HP do time +595</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/30.gif"><img class="sh" src="../public/sprites/pokemon/shiny/30.gif"></td>
+    <td class="nm"><b>#030 Nidorina</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 6</b><br><small>Orçamento 166 · Recarga 3.3s · HP do time +1062</small></td>
+    <td class="ab"><b>Ponto Venenoso</b> — Ao comprar: Pokémon de Veneno na loja ganham +1 Veneno pelo resto da run.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/31.gif"><img class="sh" src="../public/sprites/pokemon/shiny/31.gif"></td>
+    <td class="nm"><b>#031 Nidoqueen</b><br><span class="tc" style="background:#a33ea1">Veneno</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 99</b> · <b class="k-poison">Veneno 6</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 290 · Recarga 2.8s · HP do time +1856</small></td>
+    <td class="ab"><b>Rainha do Veneno</b> — Início da batalha: ganha Veneno igual ao Veneno somado dos aliados.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Nidoran♂ → Nidorino → Nidoking <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Nidorino no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/32.gif"><img class="sh" src="../public/sprites/pokemon/shiny/32.gif"></td>
+    <td class="nm"><b>#032 Nidoran♂</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 4</b><br><small>Orçamento 92 · Recarga 3.4s · HP do time +589</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/33.gif"><img class="sh" src="../public/sprites/pokemon/shiny/33.gif"></td>
+    <td class="nm"><b>#033 Nidorino</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 6</b><br><small>Orçamento 166 · Recarga 3.0s · HP do time +1062</small></td>
+    <td class="ab"><b>Chifre Venenoso</b> — Quando um aliado com Veneno ataca: ganha +1 Dano permanentemente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/34.gif"><img class="sh" src="../public/sprites/pokemon/shiny/34.gif"></td>
+    <td class="nm"><b>#034 Nidoking</b><br><span class="tc" style="background:#a33ea1">Veneno</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 91</b> · <b class="k-poison">Veneno 6</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 290 · Recarga 2.6s · HP do time +1856</small></td>
+    <td class="ab"><b>Rei Tóxico</b> — Quando um aliado com Veneno ataca: carrega este em 0.5s.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Vulpix → Ninetales <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Ninetales com Pedra de Fogo (ou sozinho no Lv. 3)</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/37.gif"><img class="sh" src="../public/sprites/pokemon/shiny/37.gif"></td>
+    <td class="nm"><b>#037 Vulpix</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 9</b><br><small>Orçamento 116 · Recarga 3.0s · HP do time +742</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/38.gif"><img class="sh" src="../public/sprites/pokemon/shiny/38.gif"></td>
+    <td class="nm"><b>#038 Ninetales</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 15</b><br><small>Orçamento 265 · Recarga 2.2s · HP do time +1696</small></td>
+    <td class="ab"><b>Fogo Interior</b> — Contínuo: Dano extra igual a 8x a sua Queimadura. Quando um aliado de Fogo ataca: +1 Queimadura nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Zubat → Golbat → Crobat <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Golbat no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/41.gif"><img class="sh" src="../public/sprites/pokemon/shiny/41.gif"></td>
+    <td class="nm"><b>#041 Zubat</b><br><span class="tc" style="background:#a33ea1">Veneno</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-multi">Carga 0</b><br><small>Orçamento 95 · Recarga 3.3s · HP do time +608</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/42.gif"><img class="sh" src="../public/sprites/pokemon/shiny/42.gif"></td>
+    <td class="nm"><b>#042 Golbat</b><br><span class="tc" style="background:#a33ea1">Veneno</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-poison">Veneno 5</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 239 · Recarga 2.4s · HP do time +1530</small></td>
+    <td class="ab"><b>Sugar Sangue</b> — Ao atacar: cura o time em 30% do dano causado.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/169.gif"><img class="sh" src="../public/sprites/pokemon/shiny/169.gif"></td>
+    <td class="nm"><b>#169 Crobat</b><br><span class="tc" style="background:#a33ea1">Veneno</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-poison">Veneno 4</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 354 · Recarga 1.5s · HP do time +2266</small></td>
+    <td class="ab"><b>Voo Silencioso</b> — Contínuo: este e o aliado atrás têm +15% vel. de recarga.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Oddish → Gloom → Vileplume → Bellossom <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Gloom no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/43.gif"><img class="sh" src="../public/sprites/pokemon/shiny/43.gif"></td>
+    <td class="nm"><b>#043 Oddish</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-heal">Cresc. 12.2%</b><br><small>Orçamento 108 · Recarga 3.9s · HP do time +691</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/44.gif"><img class="sh" src="../public/sprites/pokemon/shiny/44.gif"></td>
+    <td class="nm"><b>#044 Gloom</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 3</b> · <b class="k-heal">Cresc. 20.4%</b><br><small>Orçamento 180 · Recarga 3.6s · HP do time +1152</small></td>
+    <td class="ab"><b>Odor</b> — Ao atacar: aliados de Veneno adjacentes ganham +2 Veneno nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/45.gif"><img class="sh" src="../public/sprites/pokemon/shiny/45.gif"></td>
+    <td class="nm"><b>#045 Vileplume</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 4</b> · <b class="k-heal">Cresc. 31.8%</b><br><small>Orçamento 281 · Recarga 3.4s · HP do time +1798</small></td>
+    <td class="ab"><b>Pétalas Tóxicas</b> — Contínuo: tem Dano extra igual a 100% da Veneno no inimigo.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/182.gif"><img class="sh" src="../public/sprites/pokemon/shiny/182.gif"></td>
+    <td class="nm"><b>#182 Bellossom</b><br><span class="tc" style="background:#7ac74c">Planta</span></td>
+    <td class="st"><b class="k-dmg">Dano 45</b> · <b class="k-heal">Cresc. 48.9%</b><br><small>Orçamento 281 · Recarga 3.4s · HP do time +1798</small></td>
+    <td class="ab"><b>Dança das Pétalas</b> — Ao atacar: aliados de Planta ganham +3 Crescimento nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Paras → Parasect <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Parasect no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/46.gif"><img class="sh" src="../public/sprites/pokemon/shiny/46.gif"></td>
+    <td class="nm"><b>#046 Paras</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#7ac74c">Planta</span></td>
+    <td class="st"><b class="k-heal">Cresc. 5.5%</b> · <b class="k-dmg">Enxame 4</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 90 · Recarga 4.0s · HP do time +576</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/47.gif"><img class="sh" src="../public/sprites/pokemon/shiny/47.gif"></td>
+    <td class="nm"><b>#047 Parasect</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#7ac74c">Planta</span></td>
+    <td class="st"><b class="k-heal">Cresc. 10.5%</b> · <b class="k-dmg">Enxame 7</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 173 · Recarga 3.9s · HP do time +1107</small></td>
+    <td class="ab"><b>Cogumelo Parasita</b> — Quando qualquer Pokémon é nocauteado: +2 Veneno permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Venonat → Venomoth <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Venomoth no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/48.gif"><img class="sh" src="../public/sprites/pokemon/shiny/48.gif"></td>
+    <td class="nm"><b>#048 Venonat</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-dmg">Enxame 4</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 103 · Recarga 3.5s · HP do time +659</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/49.gif"><img class="sh" src="../public/sprites/pokemon/shiny/49.gif"></td>
+    <td class="nm"><b>#049 Venomoth</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-dmg">Enxame 5</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 205 · Recarga 2.4s · HP do time +1312</small></td>
+    <td class="ab"><b>Pó Alucinógeno</b> — Quando um aliado de Veneno ataca: ele ganha +5% vel. de recarga nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Diglett → Dugtrio <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Dugtrio no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/50.gif"><img class="sh" src="../public/sprites/pokemon/shiny/50.gif"></td>
+    <td class="nm"><b>#050 Diglett</b><br><span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 72</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 89 · Recarga 2.3s · HP do time +570</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/51.gif"><img class="sh" src="../public/sprites/pokemon/shiny/51.gif"></td>
+    <td class="nm"><b>#051 Dugtrio</b><br><span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 117</b> · <b class="k-dmg">Perfurar 2x</b> · <b class="k-multi">Multicast 3</b><br><small>Orçamento 194 · Recarga 1.7s · HP do time +1242</small></td>
+    <td class="ab"><b>Três Cabeças</b> — Contínuo: Multicast +2. Aliados de Terra adjacentes perfuram 3x.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Meowth → Persian → Perrserker <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui depois de ganhar ₽12 com Pay Day (vira Perrserker se estiver ao lado de um Pokémon de Aço) → Persian / Perrserker</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/52.gif"><img class="sh" src="../public/sprites/pokemon/shiny/52.gif"></td>
+    <td class="nm"><b>#052 Meowth</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 37</b><br><small>Orçamento 98 · Recarga 2.4s · HP do time +1298</small></td>
+    <td class="ab"><b>Pay Day</b> — Ao atacar: ganha ₽1 (máx. ₽3 por batalha).<div class="shab">★ <b>Pay Day ★</b> — Ao atacar: ganha ₽1 (máx. ₽6 por batalha). Na vitória: +₽2.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/53.gif"><img class="sh" src="../public/sprites/pokemon/shiny/53.gif"></td>
+    <td class="nm"><b>#053 Persian</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 57</b><br><small>Orçamento 200 · Recarga 1.8s · HP do time +2648</small></td>
+    <td class="ab"><b>Elegância</b> — Contínuo: +4 Dano para cada ₽10 que você tem (máx. ₽100). Quando você usa um item: +₽1.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/863.png"><img class="sh" src="../public/sprites/pokemon/shiny/863.png"></td>
+    <td class="nm"><b>#863 Perrserker</b><br><span class="tc" style="background:#8f95b2">Aço</span></td>
+    <td class="st"><b class="k-shield">Escudo 86</b> · <b class="k-shield">Armadura 58</b><br><small>Orçamento 297 · Recarga 3.4s · HP do time +1901</small></td>
+    <td class="ab"><b>Garras de Aço</b> — Contínuo: +1 Armadura para cada ₽10 que você tem (máx. ₽100).<div class="shab">★ <b>Garras de Aço ★</b> — Contínuo: +2 Armadura para cada ₽10 que você tem (máx. ₽100).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Psyduck → Golduck <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui depois de 4 batalhas no time → Golduck</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/54.gif"><img class="sh" src="../public/sprites/pokemon/shiny/54.gif"></td>
+    <td class="nm"><b>#054 Psyduck</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 36</b> · <b class="k-heal">Limpeza 4.5%</b><br><small>Orçamento 125 · Recarga 3.3s · HP do time +800</small></td>
+    <td class="ab"><b>Dor de Cabeça</b> — A cada 5s: +1 Multicast nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/55.gif"><img class="sh" src="../public/sprites/pokemon/shiny/55.gif"></td>
+    <td class="nm"><b>#055 Golduck</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 59</b> · <b class="k-heal">Limpeza 9.5%</b><br><small>Orçamento 263 · Recarga 2.6s · HP do time +1683</small></td>
+    <td class="ab"><b>Mente Aguçada</b> — Contínuo: aliados Psíquicos adjacentes têm +25 Eco.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Mankey → Primeape → Annihilape <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui de raiva depois que o time perde uma batalha → Primeape</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/56.gif"><img class="sh" src="../public/sprites/pokemon/shiny/56.gif"></td>
+    <td class="nm"><b>#056 Mankey</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 47</b> · <b class="k-dmg">Crít. 48.3%</b><br><small>Orçamento 119 · Recarga 2.9s · HP do time +762</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/57.gif"><img class="sh" src="../public/sprites/pokemon/shiny/57.gif"></td>
+    <td class="nm"><b>#057 Primeape</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 76</b> · <b class="k-dmg">Crít. 96.9%</b><br><small>Orçamento 239 · Recarga 2.3s · HP do time +1530</small></td>
+    <td class="ab"><b>Fúria</b> — Ao atacar: +5 Crítico e +5% vel. de recarga nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/979.png"><img class="sh" src="../public/sprites/pokemon/shiny/979.png"></td>
+    <td class="nm"><b>#979 Annihilape</b><br><span class="tc" style="background:#c22e28">Lutador</span> <span class="tc" style="background:#735797">Fantasma</span></td>
+    <td class="st"><b class="k-dmg">Dano 90</b> · <b class="k-dmg">Espectral 98</b> · <b class="k-dmg">Crít. 109.7%</b><br><small>Orçamento 416 · Recarga 2.4s · HP do time +2662</small></td>
+    <td class="ab"><b>Punho da Raiva</b> — Quando qualquer Pokémon é nocauteado: +10 Dano Espectral permanentemente e +10 Crítico nesta batalha.<div class="shab">★ <b>Punho da Raiva ★</b> — Quando qualquer Pokémon é nocauteado: +22 Dano Espectral permanentemente e +18 Crítico nesta batalha.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Growlithe → Arcanine <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Arcanine com Pedra de Fogo (ou sozinho no Lv. 3)</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/58.gif"><img class="sh" src="../public/sprites/pokemon/shiny/58.gif"></td>
+    <td class="nm"><b>#058 Growlithe</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 13</b><br><small>Orçamento 161 · Recarga 3.2s · HP do time +1030</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/59.gif"><img class="sh" src="../public/sprites/pokemon/shiny/59.gif"></td>
+    <td class="nm"><b>#059 Arcanine</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 21</b><br><small>Orçamento 345 · Recarga 2.3s · HP do time +2208</small></td>
+    <td class="ab"><b>Lealdade</b> — Início da batalha: aliados de Fogo ganham +1 Queimadura permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Poliwag → Poliwhirl → Poliwrath → Politoed <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Poliwhirl no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/60.gif"><img class="sh" src="../public/sprites/pokemon/shiny/60.gif"></td>
+    <td class="nm"><b>#060 Poliwag</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 22</b> · <b class="k-heal">Limpeza 3.6%</b><br><small>Orçamento 101 · Recarga 2.4s · HP do time +646</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/61.gif"><img class="sh" src="../public/sprites/pokemon/shiny/61.gif"></td>
+    <td class="nm"><b>#061 Poliwhirl</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 37</b> · <b class="k-heal">Limpeza 6.3%</b><br><small>Orçamento 175 · Recarga 2.4s · HP do time +1120</small></td>
+    <td class="ab"><b>Hipnose</b> — Ao atacar: atrasa o inimigo oposto em 0.8s.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/62.gif"><img class="sh" src="../public/sprites/pokemon/shiny/62.gif"></td>
+    <td class="nm"><b>#062 Poliwrath</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 41</b> · <b class="k-heal">Cura 49</b> · <b class="k-heal">Limpeza 6.9%</b> · <b class="k-dmg">Crít. 41.6%</b><br><small>Orçamento 293 · Recarga 2.9s · HP do time +1875</small></td>
+    <td class="ab"><b>Punho Dinâmico</b> — Na vitória: sobe de nível (pode passar do Lv. 4, até o 5).</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/186.gif"><img class="sh" src="../public/sprites/pokemon/shiny/186.gif"></td>
+    <td class="nm"><b>#186 Politoed</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 73</b> · <b class="k-heal">Limpeza 10.3%</b><br><small>Orçamento 287 · Recarga 2.9s · HP do time +1837</small></td>
+    <td class="ab"><b>Garoa</b> — Contínuo: aliados de Água da mesma linha têm +1 Multicast.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Abra → Kadabra → Alakazam <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Kadabra no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/63.gif"><img class="sh" src="../public/sprites/pokemon/shiny/63.gif"></td>
+    <td class="nm"><b>#063 Abra</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 12</b> · <b class="k-multi">Eco 17%</b><br><small>Orçamento 105 · Recarga 2.4s · HP do time +672</small></td>
+    <td class="ab"><b>Teleporte</b> — Ao ser nocauteado: teleporta e revive (1x por batalha).<div class="shab">★ <b>Teleporte ★</b> — Ao ser nocauteado: revive (2x por batalha).</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/64.gif"><img class="sh" src="../public/sprites/pokemon/shiny/64.gif"></td>
+    <td class="nm"><b>#064 Kadabra</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 18</b> · <b class="k-multi">Eco 29.5%</b><br><small>Orçamento 182 · Recarga 2.1s · HP do time +1165</small></td>
+    <td class="ab"><b>Psicocinese</b> — Ao atacar: o aliado atrás ganha +3% vel. de recarga permanentemente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/65.gif"><img class="sh" src="../public/sprites/pokemon/shiny/65.gif"></td>
+    <td class="nm"><b>#065 Alakazam</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 23</b> · <b class="k-multi">Eco 46.5%</b><br><small>Orçamento 287 · Recarga 1.7s · HP do time +1837</small></td>
+    <td class="ab"><b>Gênio</b> — Contínuo: +25 Eco para cada outro Psíquico na equipe.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Machop → Machoke → Machamp <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Machoke no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/66.gif"><img class="sh" src="../public/sprites/pokemon/shiny/66.gif"></td>
+    <td class="nm"><b>#066 Machop</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 53</b> · <b class="k-dmg">Crít. 41.8%</b><br><small>Orçamento 103 · Recarga 3.8s · HP do time +659</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/67.gif"><img class="sh" src="../public/sprites/pokemon/shiny/67.gif"></td>
+    <td class="nm"><b>#067 Machoke</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 89</b> · <b class="k-dmg">Crít. 75%</b><br><small>Orçamento 185 · Recarga 3.5s · HP do time +1184</small></td>
+    <td class="ab"><b>Treino</b> — Na vitória: este e os aliados de Lutador ganham +8 Dano permanentemente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/68.gif"><img class="sh" src="../public/sprites/pokemon/shiny/68.gif"></td>
+    <td class="nm"><b>#068 Machamp</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 130</b> · <b class="k-dmg">Crít. 117.6%</b><br><small>Orçamento 290 · Recarga 3.3s · HP do time +1856</small></td>
+    <td class="ab"><b>Quatro Braços</b> — Na vitória: este e os aliados Comuns ganham +10 Dano permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Bellsprout → Weepinbell → Victreebel <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Weepinbell no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/69.gif"><img class="sh" src="../public/sprites/pokemon/shiny/69.gif"></td>
+    <td class="nm"><b>#069 Bellsprout</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-heal">Cresc. 11.4%</b><br><small>Orçamento 101 · Recarga 3.6s · HP do time +646</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/70.gif"><img class="sh" src="../public/sprites/pokemon/shiny/70.gif"></td>
+    <td class="nm"><b>#070 Weepinbell</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 2</b> · <b class="k-heal">Cresc. 20.1%</b><br><small>Orçamento 178 · Recarga 3.3s · HP do time +1139</small></td>
+    <td class="ab"><b>Chicote de Vinha</b> — Ao atacar: +3 Crescimento nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/71.gif"><img class="sh" src="../public/sprites/pokemon/shiny/71.gif"></td>
+    <td class="nm"><b>#071 Victreebel</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 3</b> · <b class="k-heal">Cresc. 31.8%</b><br><small>Orçamento 281 · Recarga 2.9s · HP do time +1798</small></td>
+    <td class="ab"><b>Engolir</b> — Quando qualquer Pokémon é nocauteado: +15 Dano permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Tentacool → Tentacruel <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Tentacruel no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/72.gif"><img class="sh" src="../public/sprites/pokemon/shiny/72.gif"></td>
+    <td class="nm"><b>#072 Tentacool</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-heal">Cura 22</b> · <b class="k-heal">Limpeza 3%</b> · <b class="k-poison">Veneno 2</b><br><small>Orçamento 130 · Recarga 2.9s · HP do time +832</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/73.gif"><img class="sh" src="../public/sprites/pokemon/shiny/73.gif"></td>
+    <td class="nm"><b>#073 Tentacruel</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-heal">Cura 34</b> · <b class="k-heal">Limpeza 6.3%</b> · <b class="k-poison">Veneno 3</b><br><small>Orçamento 271 · Recarga 2.2s · HP do time +1734</small></td>
+    <td class="ab"><b>Tentáculos</b> — Quando um aliado de Veneno adjacente ataca: ataca também.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Geodude → Graveler → Golem <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui quando o time recebe Escudo 20 vezes (ou no Lv. 2) → Graveler</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/74.gif"><img class="sh" src="../public/sprites/pokemon/shiny/74.gif"></td>
+    <td class="nm"><b>#074 Geodude</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 51</b> · <b class="k-shield">Escudo 108</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 101 · Recarga 4.1s · HP do time +646</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/75.gif"><img class="sh" src="../public/sprites/pokemon/shiny/75.gif"></td>
+    <td class="nm"><b>#075 Graveler</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 82</b> · <b class="k-shield">Escudo 174</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 178 · Recarga 3.8s · HP do time +1139</small></td>
+    <td class="ab"><b>Robustez</b> — Contínuo: aliados de Pedra adjacentes têm +15 Escudo.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/76.gif"><img class="sh" src="../public/sprites/pokemon/shiny/76.gif"></td>
+    <td class="nm"><b>#076 Golem</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 122</b> · <b class="k-shield">Escudo 260</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 284 · Recarga 3.5s · HP do time +1818</small></td>
+    <td class="ab"><b>Explosão</b> — Primeiro ataque: causa 7x de Dano e se nocauteia.<div class="shab">★ <b>Explosão ★</b> — Primeiro ataque: causa 4x de Dano (sem se nocautear).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Ponyta → Rapidash <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Rapidash no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/77.gif"><img class="sh" src="../public/sprites/pokemon/shiny/77.gif"></td>
+    <td class="nm"><b>#077 Ponyta</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 10</b><br><small>Orçamento 160 · Recarga 2.4s · HP do time +1024</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/78.gif"><img class="sh" src="../public/sprites/pokemon/shiny/78.gif"></td>
+    <td class="nm"><b>#078 Rapidash</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 14</b><br><small>Orçamento 263 · Recarga 2.1s · HP do time +1683</small></td>
+    <td class="ab"><b>Galope</b> — Ao atacar: +6% Vel. de recarga nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Slowpoke → Slowbro → Slowking <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui ao começar uma batalha ao lado de um Shellder (ou no Lv. 3); com King's Rock vira Slowking → Slowbro / Slowking</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/79.gif"><img class="sh" src="../public/sprites/pokemon/shiny/79.gif"></td>
+    <td class="nm"><b>#079 Slowpoke</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-heal">Cura 47</b> · <b class="k-heal">Limpeza 2.9%</b> · <b class="k-multi">Eco 7%</b><br><small>Orçamento 123 · Recarga 6.4s · HP do time +787</small></td>
+    <td class="ab"><b>Desligado</b> — Contínuo: +60% em todos os stats, recarga 50% mais lenta.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/80.gif"><img class="sh" src="../public/sprites/pokemon/shiny/80.gif"></td>
+    <td class="nm"><b>#080 Slowbro</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-heal">Cura 57</b> · <b class="k-heal">Limpeza 6%</b> · <b class="k-multi">Eco 14.6%</b><br><small>Orçamento 257 · Recarga 3.9s · HP do time +1645</small></td>
+    <td class="ab"><b>Shellder Mordedor</b> — Contínuo: o aliado à frente tem +1 Multicast.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/199.gif"><img class="sh" src="../public/sprites/pokemon/shiny/199.gif"></td>
+    <td class="nm"><b>#199 Slowking</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-heal">Cura 57</b> · <b class="k-heal">Limpeza 6%</b> · <b class="k-multi">Eco 14.6%</b><br><small>Orçamento 257 · Recarga 3.9s · HP do time +1645</small></td>
+    <td class="ab"><b>Sabedoria Real</b> — Ao atacar: ativa o aliado Psíquico com mais Eco.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Magnemite → Magneton → Magnezone <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Magneton no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/81.gif"><img class="sh" src="../public/sprites/pokemon/shiny/81.gif"></td>
+    <td class="nm"><b>#081 Magnemite</b><br><span class="tc" style="background:#f7d02c">Elétrico</span> <span class="tc" style="background:#8f95b2">Aço</span></td>
+    <td class="st"><b class="k-shield">Escudo 13</b> · <b class="k-shield">Armadura 9</b> · <b class="k-shock">Choque 2</b><br><small>Orçamento 126 · Recarga 3.5s · HP do time +806</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/82.gif"><img class="sh" src="../public/sprites/pokemon/shiny/82.gif"></td>
+    <td class="nm"><b>#082 Magneton</b><br><span class="tc" style="background:#f7d02c">Elétrico</span> <span class="tc" style="background:#8f95b2">Aço</span></td>
+    <td class="st"><b class="k-shield">Escudo 21</b> · <b class="k-shield">Armadura 17</b> · <b class="k-shock">Choque 3</b><br><small>Orçamento 244 · Recarga 2.9s · HP do time +1562</small></td>
+    <td class="ab"><b>Campo Magnético</b> — Ao atacar: carrega os aliados Elétricos adjacentes em 1s.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/462.gif"><img class="sh" src="../public/sprites/pokemon/shiny/462.gif"></td>
+    <td class="nm"><b>#462 Magnezone</b><br><span class="tc" style="background:#f7d02c">Elétrico</span> <span class="tc" style="background:#8f95b2">Aço</span></td>
+    <td class="st"><b class="k-shield">Escudo 39</b> · <b class="k-shield">Armadura 29</b> · <b class="k-shock">Choque 5</b><br><small>Orçamento 416 · Recarga 3.2s · HP do time +2662</small></td>
+    <td class="ab"><b>Ímã Polar</b> — Contínuo: o time tem +2 Armadura por Pokémon Elétrico; aliados de Aço adjacentes têm +2 Choque.<div class="shab">★ <b>Ímã Polar ★</b> — Contínuo: o time tem +5 Armadura por Pokémon Elétrico; TODOS os aliados de Aço têm +4 Choque.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Farfetch’d → Sirfetch’d <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui em Sirfetch'd depois de causar 20 críticos (ou no Lv. 3) → Sirfetch’d</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/83.gif"><img class="sh" src="../public/sprites/pokemon/shiny/83.gif"></td>
+    <td class="nm"><b>#083 Farfetch’d</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 47</b> · <b class="k-dmg">Crít. 40%</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 147 · Recarga 3.2s · HP do time +1594</small></td>
+    <td class="ab"><b>Alho-poró</b> — Contínuo: +40 Crítico.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/865.png"><img class="sh" src="../public/sprites/pokemon/shiny/865.png"></td>
+    <td class="nm"><b>#865 Sirfetch’d</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 164</b> · <b class="k-dmg">Crít. 160.2%</b><br><small>Orçamento 395 · Recarga 3.0s · HP do time +2528</small></td>
+    <td class="ab"><b>Golpe de Lança</b> — Contínuo: os críticos deste e dos aliados Lutadores adjacentes causam 3x.<div class="shab">★ <b>Golpe de Lança ★</b> — Contínuo: os críticos deste e de TODOS os aliados Lutadores causam 3,5x.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Doduo → Dodrio <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Dodrio no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/84.gif"><img class="sh" src="../public/sprites/pokemon/shiny/84.gif"></td>
+    <td class="nm"><b>#084 Doduo</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 30</b> · <b class="k-multi">Carga 0</b><br><small>Orçamento 105 · Recarga 2.8s · HP do time +1139</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/85.gif"><img class="sh" src="../public/sprites/pokemon/shiny/85.gif"></td>
+    <td class="nm"><b>#085 Dodrio</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 42</b> · <b class="k-multi">Carga 1</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 214 · Recarga 2.0s · HP do time +2321</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Seel → Dewgong <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Dewgong no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/86.gif"><img class="sh" src="../public/sprites/pokemon/shiny/86.gif"></td>
+    <td class="nm"><b>#086 Seel</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 34</b> · <b class="k-heal">Limpeza 4%</b><br><small>Orçamento 110 · Recarga 3.5s · HP do time +704</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/87.gif"><img class="sh" src="../public/sprites/pokemon/shiny/87.gif"></td>
+    <td class="nm"><b>#087 Dewgong</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#96d9d6">Gelo</span></td>
+    <td class="st"><b class="k-heal">Cura 36</b> · <b class="k-heal">Limpeza 5.1%</b> · <b class="k-shock">Frio 1</b><br><small>Orçamento 216 · Recarga 2.9s · HP do time +1382</small></td>
+    <td class="ab"><b>Raio Aurora</b> — Ao atacar: aliados de Gelo ganham +2 Frio nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Grimer → Muk <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui quando o time aplica Veneno 40 vezes (ou no Lv. 3) → Muk</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/88.gif"><img class="sh" src="../public/sprites/pokemon/shiny/88.gif"></td>
+    <td class="nm"><b>#088 Grimer</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 6</b><br><small>Orçamento 126 · Recarga 4.0s · HP do time +806</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/89.gif"><img class="sh" src="../public/sprites/pokemon/shiny/89.gif"></td>
+    <td class="nm"><b>#089 Muk</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 11</b><br><small>Orçamento 263 · Recarga 3.4s · HP do time +1683</small></td>
+    <td class="ab"><b>Lodo Tóxico</b> — Contínuo: tem Escudo extra igual a 100% da Veneno no inimigo.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Shellder → Cloyster <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Cloyster com Pedra d'Água (ou sozinho no Lv. 3)</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/90.gif"><img class="sh" src="../public/sprites/pokemon/shiny/90.gif"></td>
+    <td class="nm"><b>#090 Shellder</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 38</b> · <b class="k-heal">Limpeza 4.3%</b><br><small>Orçamento 119 · Recarga 3.6s · HP do time +762</small></td>
+    <td class="ab"><b>Concha Protetora</b> — Início da batalha: o aliado atrás ganha +8 Cura permanentemente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/91.gif"><img class="sh" src="../public/sprites/pokemon/shiny/91.gif"></td>
+    <td class="nm"><b>#091 Cloyster</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#96d9d6">Gelo</span></td>
+    <td class="st"><b class="k-heal">Cura 46</b> · <b class="k-heal">Limpeza 6.5%</b> · <b class="k-shock">Frio 1</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 276 · Recarga 2.9s · HP do time +1766</small></td>
+    <td class="ab"><b>Espinhos de Gelo</b> — Contínuo: Multicast +1. Aliados de Gelo adjacentes têm +3 Frio.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Gastly → Haunter → Gengar <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Haunter no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/92.gif"><img class="sh" src="../public/sprites/pokemon/shiny/92.gif"></td>
+    <td class="nm"><b>#092 Gastly</b><br><span class="tc" style="background:#735797">Fantasma</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-dmg">Espectral 50</b> · <b class="k-poison">Veneno 1</b><br><small>Orçamento 105 · Recarga 2.7s · HP do time +672</small></td>
+    <td class="ab"><b>Maldição</b> — Ao ser nocauteado: +1 Multicast permanentemente e aliados Fantasma ganham +10 Dano Espectral nesta batalha.<div class="shab">★ <b>Maldição ★</b> — Ao ser nocauteado: +1 Multicast permanente e revive (1x por batalha).</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/93.gif"><img class="sh" src="../public/sprites/pokemon/shiny/93.gif"></td>
+    <td class="nm"><b>#093 Haunter</b><br><span class="tc" style="background:#735797">Fantasma</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-dmg">Espectral 77</b> · <b class="k-poison">Veneno 2</b><br><small>Orçamento 185 · Recarga 2.3s · HP do time +1184</small></td>
+    <td class="ab"><b>Pacto Sombrio</b> — Início da batalha: nocauteia os aliados adjacentes e ganha +15 Dano Espectral por nocaute (Proteger impede e não dá bônus).</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/94.gif"><img class="sh" src="../public/sprites/pokemon/shiny/94.gif"></td>
+    <td class="nm"><b>#094 Gengar</b><br><span class="tc" style="background:#735797">Fantasma</span> <span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-dmg">Espectral 101</b> · <b class="k-poison">Veneno 2</b><br><small>Orçamento 287 · Recarga 2.0s · HP do time +1837</small></td>
+    <td class="ab"><b>Destino Sombrio</b> — Primeiro ataque: nocauteia o inimigo oposto. Contínuo: aliados Fantasma adjacentes têm +10 Dano Espectral.<div class="shab">★ <b>Destino Sombrio ★</b> — A cada 3 ataques: nocauteia o inimigo oposto.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Onix → Steelix <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui em Steelix quando o time recebe Escudo 20 vezes (ou no Lv. 3) → Steelix</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/95.gif"><img class="sh" src="../public/sprites/pokemon/shiny/95.gif"></td>
+    <td class="nm"><b>#095 Onix</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 54</b> · <b class="k-shield">Escudo 114</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 150 · Recarga 2.9s · HP do time +960</small></td>
+    <td class="ab"><b>Corpo de Rocha</b> — Início da batalha: o time ganha 50 de Escudo por aliado de Pedra ou Terra.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/208.gif"><img class="sh" src="../public/sprites/pokemon/shiny/208.gif"></td>
+    <td class="nm"><b>#208 Steelix</b><br><span class="tc" style="background:#8f95b2">Aço</span> <span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 127</b> · <b class="k-shield">Escudo 58</b> · <b class="k-shield">Armadura 34</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 268 · Recarga 3.9s · HP do time +1715</small></td>
+    <td class="ab"><b>Corpo de Aço</b> — Início da batalha: o time ganha Escudo igual a 12% do HP máximo. Aliados de Terra ganham +2 Armadura.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Drowzee → Hypno <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Hypno no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/96.gif"><img class="sh" src="../public/sprites/pokemon/shiny/96.gif"></td>
+    <td class="nm"><b>#096 Drowzee</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 21</b> · <b class="k-multi">Eco 20.7%</b><br><small>Orçamento 128 · Recarga 3.6s · HP do time +819</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/97.gif"><img class="sh" src="../public/sprites/pokemon/shiny/97.gif"></td>
+    <td class="nm"><b>#097 Hypno</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 35</b> · <b class="k-multi">Eco 41.1%</b><br><small>Orçamento 254 · Recarga 3.0s · HP do time +1626</small></td>
+    <td class="ab"><b>Comer Sonhos</b> — Ao atacar: atrasa o inimigo oposto em 0.7s, cura 20 e ganha +2 Punir nesta batalha. Quando você ganha um item segurado: +3 Punir permanente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Krabby → Kingler <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Kingler no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/98.gif"><img class="sh" src="../public/sprites/pokemon/shiny/98.gif"></td>
+    <td class="nm"><b>#098 Krabby</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 33</b> · <b class="k-heal">Limpeza 4%</b><br><small>Orçamento 110 · Recarga 3.4s · HP do time +704</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/99.gif"><img class="sh" src="../public/sprites/pokemon/shiny/99.gif"></td>
+    <td class="nm"><b>#099 Kingler</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 53</b> · <b class="k-heal">Limpeza 7.8%</b><br><small>Orçamento 216 · Recarga 2.8s · HP do time +1382</small></td>
+    <td class="ab"><b>Martelo Caranguejo</b> — A cada 3 ataques: causa Dano extra igual a 4x a sua Cura.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Voltorb → Electrode <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Electrode no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/100.gif"><img class="sh" src="../public/sprites/pokemon/shiny/100.gif"></td>
+    <td class="nm"><b>#100 Voltorb</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 2</b><br><small>Orçamento 128 · Recarga 2.2s · HP do time +819</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/101.gif"><img class="sh" src="../public/sprites/pokemon/shiny/101.gif"></td>
+    <td class="nm"><b>#101 Electrode</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 2</b><br><small>Orçamento 257 · Recarga 1.4s · HP do time +1645</small></td>
+    <td class="ab"><b>Autodestruição</b> — Ao atacar: aplica +30 Choque no inimigo e se nocauteia.<div class="shab">★ <b>Autodestruição ★</b> — Ao atacar: aplica +18 Choque no inimigo (sem se nocautear).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Exeggcute → Exeggutor <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Exeggutor com Pedra da Folha (ou sozinho no Lv. 3)</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/102.gif"><img class="sh" src="../public/sprites/pokemon/shiny/102.gif"></td>
+    <td class="nm"><b>#102 Exeggcute</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 17</b> · <b class="k-heal">Cresc. 17%</b> · <b class="k-multi">Eco 8.5%</b><br><small>Orçamento 150 · Recarga 3.6s · HP do time +960</small></td>
+    <td class="ab"><b>Ovos Psíquicos</b> — Ao comprar: o próximo Pokémon que você comprar vira tipo Planta e ganha +4 Crescimento.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/103.gif"><img class="sh" src="../public/sprites/pokemon/shiny/103.gif"></td>
+    <td class="nm"><b>#103 Exeggutor</b><br><span class="tc" style="background:#7ac74c">Planta</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 33</b> · <b class="k-heal">Cresc. 37.2%</b> · <b class="k-multi">Eco 18.7%</b><br><small>Orçamento 329 · Recarga 3.3s · HP do time +2106</small></td>
+    <td class="ab"><b>Bomba de Sementes</b> — Ao atacar: ativa o aliado de Planta acima/abaixo.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Cubone → Marowak <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui depois de ver 3 aliados nocauteados → Marowak</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/104.gif"><img class="sh" src="../public/sprites/pokemon/shiny/104.gif"></td>
+    <td class="nm"><b>#104 Cubone</b><br><span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 150</b> · <b class="k-dmg">Perfurar 2x</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 108 · Recarga 3.8s · HP do time +691</small></td>
+    <td class="ab"><b>Osso Bumerangue</b> — Contínuo: Multicast +1 e +8 Dano por Pokémon de Terra na equipe.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/105.gif"><img class="sh" src="../public/sprites/pokemon/shiny/105.gif"></td>
+    <td class="nm"><b>#105 Marowak</b><br><span class="tc" style="background:#e2bf65">Terra</span></td>
+    <td class="st"><b class="k-dmg">Dano 239</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 194 · Recarga 3.5s · HP do time +1242</small></td>
+    <td class="ab"><b>Vingança</b> — Quando um aliado é nocauteado: ganha 70% do Dano dele nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Lickitung → Lickilicky <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Lickilicky no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/108.gif"><img class="sh" src="../public/sprites/pokemon/shiny/108.gif"></td>
+    <td class="nm"><b>#108 Lickitung</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 90</b><br><small>Orçamento 150 · Recarga 3.9s · HP do time +1986</small></td>
+    <td class="ab"><b>Lambida</b> — Ao atacar: rouba até 30 de Escudo do inimigo.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/463.gif"><img class="sh" src="../public/sprites/pokemon/shiny/463.gif"></td>
+    <td class="nm"><b>#463 Lickilicky</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 212</b><br><small>Orçamento 401 · Recarga 3.4s · HP do time +5309</small></td>
+    <td class="ab"><b>Língua Gulosa</b> — Quando você usa um item: +6 Dano e +40 HP permanentemente.<div class="shab">★ <b>Língua Gulosa ★</b> — Quando você usa um item: +12 Dano e +84 HP permanentemente.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Koffing → Weezing <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Weezing no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/109.gif"><img class="sh" src="../public/sprites/pokemon/shiny/109.gif"></td>
+    <td class="nm"><b>#109 Koffing</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 6</b><br><small>Orçamento 132 · Recarga 3.8s · HP do time +845</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/110.gif"><img class="sh" src="../public/sprites/pokemon/shiny/110.gif"></td>
+    <td class="nm"><b>#110 Weezing</b><br><span class="tc" style="background:#a33ea1">Veneno</span></td>
+    <td class="st"><b class="k-poison">Veneno 10</b><br><small>Orçamento 257 · Recarga 3.2s · HP do time +1645</small></td>
+    <td class="ab"><b>Nuvem Tóxica</b> — Início da batalha: aplica 10 de Veneno no inimigo. Ao ser nocauteado: aplica mais 20.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Rhyhorn → Rhydon → Rhyperior <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Rhydon no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/111.gif"><img class="sh" src="../public/sprites/pokemon/shiny/111.gif"></td>
+    <td class="nm"><b>#111 Rhyhorn</b><br><span class="tc" style="background:#e2bf65">Terra</span> <span class="tc" style="background:#b6a136">Pedra</span></td>
+    <td class="st"><b class="k-dmg">Dano 122</b> · <b class="k-shield">Escudo 75</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 134 · Recarga 4.0s · HP do time +858</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/112.gif"><img class="sh" src="../public/sprites/pokemon/shiny/112.gif"></td>
+    <td class="nm"><b>#112 Rhydon</b><br><span class="tc" style="background:#e2bf65">Terra</span> <span class="tc" style="background:#b6a136">Pedra</span></td>
+    <td class="st"><b class="k-dmg">Dano 264</b> · <b class="k-shield">Escudo 130</b> · <b class="k-dmg">Perfurar 3x</b><br><small>Orçamento 255 · Recarga 3.6s · HP do time +1632</small></td>
+    <td class="ab"><b>Chifre Broca</b> — Contínuo: +25% de Dano e perfura 3x.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/464.gif"><img class="sh" src="../public/sprites/pokemon/shiny/464.gif"></td>
+    <td class="nm"><b>#464 Rhyperior</b><br><span class="tc" style="background:#e2bf65">Terra</span> <span class="tc" style="background:#b6a136">Pedra</span></td>
+    <td class="st"><b class="k-dmg">Dano 344</b> · <b class="k-shield">Escudo 212</b> · <b class="k-dmg">Perfurar 2x</b><br><small>Orçamento 416 · Recarga 3.6s · HP do time +2662</small></td>
+    <td class="ab"><b>Rocha Armada</b> — Contínuo: tem Dano extra igual a 20% do Escudo atual do time.<div class="shab">★ <b>Rocha Armada ★</b> — Contínuo: tem Dano extra igual a 35% do Escudo atual do time.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Tangela → Tangrowth <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Tangrowth no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/114.gif"><img class="sh" src="../public/sprites/pokemon/shiny/114.gif"></td>
+    <td class="nm"><b>#114 Tangela</b><br><span class="tc" style="background:#7ac74c">Planta</span></td>
+    <td class="st"><b class="k-dmg">Dano 29</b> · <b class="k-heal">Cresc. 34.8%</b><br><small>Orçamento 200 · Recarga 3.2s · HP do time +1280</small></td>
+    <td class="ab"><b>Constrição</b> — Início da batalha: inimigos da mesma linha têm +1s de recarga.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/465.gif"><img class="sh" src="../public/sprites/pokemon/shiny/465.gif"></td>
+    <td class="nm"><b>#465 Tangrowth</b><br><span class="tc" style="background:#7ac74c">Planta</span></td>
+    <td class="st"><b class="k-dmg">Dano 78</b> · <b class="k-heal">Cresc. 85.6%</b><br><small>Orçamento 492 · Recarga 3.4s · HP do time +3149</small></td>
+    <td class="ab"><b>Vinhas Gigantes</b> — Ao atacar: aliados de Planta adjacentes ganham +3 Crescimento nesta batalha.<div class="shab">★ <b>Vinhas Gigantes ★</b> — Ao atacar: TODOS os aliados de Planta ganham +4 Crescimento nesta batalha.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Kangaskhan <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/115.gif"><img class="sh" src="../public/sprites/pokemon/shiny/115.gif"></td>
+    <td class="nm"><b>#115 Kangaskhan</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 72</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 191 · Recarga 2.4s · HP do time +2529</small></td>
+    <td class="ab"><b>Laço Parental</b> — Contínuo: Multicast +1; aliados Normais adjacentes têm +10 Dano; o time tem +150 de HP.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Horsea → Seadra → Kingdra <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Seadra no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/116.gif"><img class="sh" src="../public/sprites/pokemon/shiny/116.gif"></td>
+    <td class="nm"><b>#116 Horsea</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 32</b> · <b class="k-heal">Limpeza 4.1%</b><br><small>Orçamento 115 · Recarga 3.2s · HP do time +736</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/117.gif"><img class="sh" src="../public/sprites/pokemon/shiny/117.gif"></td>
+    <td class="nm"><b>#117 Seadra</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 52</b> · <b class="k-heal">Limpeza 8.3%</b><br><small>Orçamento 231 · Recarga 2.6s · HP do time +1478</small></td>
+    <td class="ab"><b>Correnteza</b> — Ao atacar: o aliado atrás ganha +6 Cura nesta batalha (se for Dragão, +6 Dano também).</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/230.gif"><img class="sh" src="../public/sprites/pokemon/shiny/230.gif"></td>
+    <td class="nm"><b>#230 Kingdra</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#6f35fc">Dragão</span></td>
+    <td class="st"><b class="k-dmg">Dano 113</b> · <b class="k-heal">Cura 83</b> · <b class="k-heal">Limpeza 8.4%</b><br><small>Orçamento 357 · Recarga 4.1s · HP do time +2285</small></td>
+    <td class="ab"><b>Rei dos Mares</b> — Ao atacar: o aliado à frente ganha +1 Multicast nesta batalha (+2 se for Dragão) e a recarga deste aumenta 5s.<div class="shab">★ <b>Rei dos Mares ★</b> — Ao atacar: o aliado à frente ganha +1 Multicast nesta batalha (+2 se for Dragão), sem penalidade de recarga.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Goldeen → Seaking <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Seaking no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/118.gif"><img class="sh" src="../public/sprites/pokemon/shiny/118.gif"></td>
+    <td class="nm"><b>#118 Goldeen</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 29</b> · <b class="k-heal">Limpeza 3.9%</b><br><small>Orçamento 108 · Recarga 3.1s · HP do time +691</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/119.gif"><img class="sh" src="../public/sprites/pokemon/shiny/119.gif"></td>
+    <td class="nm"><b>#119 Seaking</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 53</b> · <b class="k-heal">Limpeza 7.4%</b><br><small>Orçamento 205 · Recarga 3.0s · HP do time +1312</small></td>
+    <td class="ab"><b>Chifre Aquático</b> — Na vitória: +10 Dano e +10 Cura permanentemente. Quando você ganha um item segurado: +8 Cura permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Staryu → Starmie <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Starmie com Pedra d'Água (ou sozinho no Lv. 3)</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/120.gif"><img class="sh" src="../public/sprites/pokemon/shiny/120.gif"></td>
+    <td class="nm"><b>#120 Staryu</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 30</b> · <b class="k-heal">Limpeza 4.8%</b><br><small>Orçamento 132 · Recarga 2.6s · HP do time +845</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/121.gif"><img class="sh" src="../public/sprites/pokemon/shiny/121.gif"></td>
+    <td class="nm"><b>#121 Starmie</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-heal">Cura 29</b> · <b class="k-heal">Limpeza 6.4%</b> · <b class="k-multi">Eco 15.5%</b><br><small>Orçamento 273 · Recarga 1.8s · HP do time +1747</small></td>
+    <td class="ab"><b>Núcleo Cósmico</b> — Ao atacar: ativa os aliados de Água adjacentes (exceto outro Starmie).<div class="shab">★ <b>Núcleo Cósmico ★</b> — Ao atacar: ativa TODOS os aliados de Água (exceto outro Starmie).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Scyther → Scizor → Kleavor <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui no Lv. 3 em Scizor (Revestimento Metálico antecipa). Augurita Negra vira Kleavor.</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/123.gif"><img class="sh" src="../public/sprites/pokemon/shiny/123.gif"></td>
+    <td class="nm"><b>#123 Scyther</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-multi">Carga 1</b> · <b class="k-dmg">Enxame 8</b> · <b class="k-multi">Multicast 3</b><br><small>Orçamento 195 · Recarga 2.1s · HP do time +1248</small></td>
+    <td class="ab"><b>Lâminas Gêmeas</b> — Contínuo: Multicast +1 e +4 Enxame por Inseto na equipe.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/212.gif"><img class="sh" src="../public/sprites/pokemon/shiny/212.gif"></td>
+    <td class="nm"><b>#212 Scizor</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#8f95b2">Aço</span></td>
+    <td class="st"><b class="k-shield">Escudo 24</b> · <b class="k-shield">Armadura 18</b> · <b class="k-dmg">Enxame 9</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 263 · Recarga 3.0s · HP do time +1683</small></td>
+    <td class="ab"><b>Punho Projétil</b> — Contínuo: na coluna da frente, tem +50% Dano e +25% vel. de recarga. Aliados de Aço adjacentes têm +3 Armadura.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/900.png"><img class="sh" src="../public/sprites/pokemon/shiny/900.png"></td>
+    <td class="nm"><b>#900 Kleavor</b><br><span class="tc" style="background:#a6b91a">Inseto</span> <span class="tc" style="background:#b6a136">Pedra</span></td>
+    <td class="st"><b class="k-shield">Escudo 139</b> · <b class="k-dmg">Enxame 11</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 389 · Recarga 2.6s · HP do time +2490</small></td>
+    <td class="ab"><b>Machado de Pedra</b> — Ao atacar: o time ganha Escudo igual ao dano deste golpe. Aliados de Pedra ganham +5% de Dano.<div class="shab">★ <b>Machado de Pedra ★</b> — Ao atacar: o time ganha Escudo igual a 2x o dano deste golpe. Aliados de Pedra ganham +8% de Dano.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Pinsir <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/127.gif"><img class="sh" src="../public/sprites/pokemon/shiny/127.gif"></td>
+    <td class="nm"><b>#127 Pinsir</b><br><span class="tc" style="background:#a6b91a">Inseto</span></td>
+    <td class="st"><b class="k-dmg">Enxame 8</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 195 · Recarga 2.6s · HP do time +1248</small></td>
+    <td class="ab"><b>Guilhotina</b> — Ao atacar: 8% de chance (+2% por Inseto na equipe) de nocautear o inimigo oposto.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Tauros <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/128.gif"><img class="sh" src="../public/sprites/pokemon/shiny/128.gif"></td>
+    <td class="nm"><b>#128 Tauros</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 58</b><br><small>Orçamento 191 · Recarga 2.0s · HP do time +2529</small></td>
+    <td class="ab"><b>Fúria do Touro</b> — Na derrota: +20 Dano permanentemente. Na vitória: +8 para este e +4 para os aliados Normais.</td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Magikarp → Gyarados <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 5 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Gyarados no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/129.gif"><img class="sh" src="../public/sprites/pokemon/shiny/129.gif"></td>
+    <td class="nm"><b>#129 Magikarp</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 15</b> · <b class="k-heal">Limpeza 2.3%</b><br><small>Orçamento 63 · Recarga 2.7s · HP do time +403</small></td>
+    <td class="ab"><b>Splash</b> — Na vitória: +₽1. Precisa de 5 cópias para evoluir em Gyarados.<div class="shab">★ <b>Splash ★</b> — Na vitória: +₽3. Precisa de 5 cópias para evoluir em Gyarados.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/130.gif"><img class="sh" src="../public/sprites/pokemon/shiny/130.gif"></td>
+    <td class="nm"><b>#130 Gyarados</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-heal">Cura 35</b> · <b class="k-heal">Limpeza 5.4%</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 231 · Recarga 2.7s · HP do time +1478</small></td>
+    <td class="ab"><b>Fúria do Dragão</b> — Início da batalha: atrasa os inimigos da linha em 1s e os aliados Dragão ganham +10% de Dano (multiplicativo). Contínuo: causa Dano extra igual a 3x a sua Cura. Ao atacar: +10 Cura nesta batalha.<div class="shab">★ <b>Fúria Vermelha ★</b> — Início da batalha: atrasa TODOS os inimigos em 1s. Contínuo: causa Dano extra igual a 4x a sua Cura. Ao atacar: +18 Cura nesta batalha.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Lapras <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/131.gif"><img class="sh" src="../public/sprites/pokemon/shiny/131.gif"></td>
+    <td class="nm"><b>#131 Lapras</b><br><span class="tc" style="background:#6390f0">Água</span> <span class="tc" style="background:#96d9d6">Gelo</span></td>
+    <td class="st"><b class="k-heal">Cura 44</b> · <b class="k-heal">Limpeza 5.8%</b> · <b class="k-shock">Frio 1</b><br><small>Orçamento 246 · Recarga 3.2s · HP do time +1574</small></td>
+    <td class="ab"><b>Canto Antigo</b> — Ao atacar: os aliados adjacentes sobem 1 nível nesta batalha (máx. Lv. 3).<div class="shab">★ <b>Canto Antigo ★</b> — Ao atacar: os aliados adjacentes sobem 1 nível nesta batalha (máx. Lv. 4).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Ditto <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/132.gif"><img class="sh" src="../public/sprites/pokemon/shiny/132.gif"></td>
+    <td class="nm"><b>#132 Ditto</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 52</b><br><small>Orçamento 97 · Recarga 3.4s · HP do time +1284</small></td>
+    <td class="ab"><b>Transformar</b> — Início da batalha: copia 80% dos stats e os tipos do inimigo mais forte.<div class="shab">★ <b>Transformar ★</b> — Início da batalha: copia 100% dos stats, os tipos e a habilidade do inimigo mais forte.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Eevee → Vaporeon → Jolteon → Flareon → Espeon → Umbreon → Leafeon → Glaceon → Sylveon <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Pedras (Água, Trovão, Fogo, Folha, Gelo); 3 vitórias = Espeon; 2 derrotas = Umbreon; 15 de Bênção no time = Sylveon; no Lv. 3 vira a evolução do tipo mais comum do time (empate: sorteio).</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/133.gif"><img class="sh" src="../public/sprites/pokemon/shiny/133.gif"></td>
+    <td class="nm"><b>#133 Eevee</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 82</b><br><small>Orçamento 150 · Recarga 3.3s · HP do time +1986</small></td>
+    <td class="ab"><b>Adaptável</b> — Contínuo: +6 Dano por tipo diferente na equipe. Início da batalha: ganha o tipo mais comum do time (e o stat dele) nesta batalha.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/134.gif"><img class="sh" src="../public/sprites/pokemon/shiny/134.gif"></td>
+    <td class="nm"><b>#134 Vaporeon</b><br><span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 87</b> · <b class="k-heal">Limpeza 11.7%</b><br><small>Orçamento 326 · Recarga 3.0s · HP do time +2086</small></td>
+    <td class="ab"><b>Absorver Água</b> — Contínuo: aliados de Água têm +15 Cura e +5 Limpeza.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/135.gif"><img class="sh" src="../public/sprites/pokemon/shiny/135.gif"></td>
+    <td class="nm"><b>#135 Jolteon</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 5</b> · <b class="k-multi">Multicast 2</b><br><small>Orçamento 326 · Recarga 1.5s · HP do time +2086</small></td>
+    <td class="ab"><b>Agulhas</b> — Contínuo: Multicast +1. Cada golpe aplica +2 Choque.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/136.gif"><img class="sh" src="../public/sprites/pokemon/shiny/136.gif"></td>
+    <td class="nm"><b>#136 Flareon</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 26</b><br><small>Orçamento 326 · Recarga 3.0s · HP do time +2086</small></td>
+    <td class="ab"><b>Labareda</b> — Contínuo: tem Dano extra igual a 150% da Queimadura no inimigo.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/196.gif"><img class="sh" src="../public/sprites/pokemon/shiny/196.gif"></td>
+    <td class="nm"><b>#196 Espeon</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 30</b> · <b class="k-multi">Eco 52.8%</b><br><small>Orçamento 326 · Recarga 2.0s · HP do time +2086</small></td>
+    <td class="ab"><b>Luz do Dia</b> — Contínuo: +10 Eco para cada vitória da run.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/197.gif"><img class="sh" src="../public/sprites/pokemon/shiny/197.gif"></td>
+    <td class="nm"><b>#197 Umbreon</b><br><span class="tc" style="background:#5a4636">Sombrio</span></td>
+    <td class="st"><b class="k-dmg">Dano 110</b> · <b class="k-poison">Punir 92.9%</b><br><small>Orçamento 326 · Recarga 3.0s · HP do time +2086</small></td>
+    <td class="ab"><b>Luz da Lua</b> — Contínuo: +6 Punir e +80 HP para cada derrota da run.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/470.gif"><img class="sh" src="../public/sprites/pokemon/shiny/470.gif"></td>
+    <td class="nm"><b>#470 Leafeon</b><br><span class="tc" style="background:#7ac74c">Planta</span></td>
+    <td class="st"><b class="k-dmg">Dano 52</b> · <b class="k-heal">Cresc. 84%</b><br><small>Orçamento 483 · Recarga 2.3s · HP do time +3091</small></td>
+    <td class="ab"><b>Lâmina de Folha</b> — Início da batalha: começa com +15% de Crescimento acumulado.<div class="shab">★ <b>Lâmina de Folha ★</b> — Início da batalha: começa com +36% de Crescimento acumulado.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/471.gif"><img class="sh" src="../public/sprites/pokemon/shiny/471.gif"></td>
+    <td class="nm"><b>#471 Glaceon</b><br><span class="tc" style="background:#96d9d6">Gelo</span></td>
+    <td class="st"><b class="k-shock">Frio 4</b><br><small>Orçamento 483 · Recarga 3.0s · HP do time +3091</small></td>
+    <td class="ab"><b>Neve Fina</b> — Contínuo: enquanto Glaceon estiver de pé, o Frio do inimigo não diminui. Aliados de Gelo têm +2 Frio.<div class="shab">★ <b>Neve Fina ★</b> — Contínuo: enquanto Glaceon estiver de pé, o Frio do inimigo não diminui. TODOS os aliados têm +4 Frio.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/700.png"><img class="sh" src="../public/sprites/pokemon/shiny/700.png"></td>
+    <td class="nm"><b>#700 Sylveon</b><br><span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 71</b> · <b class="k-heal">Bênção 31</b><br><small>Orçamento 483 · Recarga 3.2s · HP do time +3091</small></td>
+    <td class="ab"><b>Laço de Fada</b> — Contínuo: a Bênção deste vale para TODOS os aliados, não só os adjacentes.<div class="shab">★ <b>Laço de Fada ★</b> — Contínuo: a Bênção deste vale para TODOS os aliados e é 50% maior.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Porygon → Porygon2 → Porygon-Z <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Porygon2 no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/137.gif"><img class="sh" src="../public/sprites/pokemon/shiny/137.gif"></td>
+    <td class="nm"><b>#137 Porygon</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 87</b><br><small>Orçamento 154 · Recarga 3.6s · HP do time +2039</small></td>
+    <td class="ab"><b>Upgrade</b> — Contínuo: +12 Dano e HP por item segurado. Quando você usa um item: +3 Dano permanentemente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/233.gif"><img class="sh" src="../public/sprites/pokemon/shiny/233.gif"></td>
+    <td class="nm"><b>#233 Porygon2</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 133</b><br><small>Orçamento 271 · Recarga 3.2s · HP do time +3588</small></td>
+    <td class="ab"><b>Upgrade 2.0</b> — Quando você ganha um item segurado: +20 Dano e +20 HP permanentemente.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/474.gif"><img class="sh" src="../public/sprites/pokemon/shiny/474.gif"></td>
+    <td class="nm"><b>#474 Porygon-Z</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 158</b><br><small>Orçamento 416 · Recarga 2.4s · HP do time +5508</small></td>
+    <td class="ab"><b>Conversão</b> — Início da batalha: ganha os tipos primários dos aliados adjacentes (e os stats deles) nesta batalha. Quando você ganha um item segurado: +1 Multicast permanente (máx. 3 pela habilidade).<div class="shab">★ <b>Conversão ★</b> — Início da batalha: ganha os tipos primários de TODOS os aliados (e os stats deles) nesta batalha. Quando você ganha um item segurado: +1 Multicast permanente (máx. 3).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Omanyte → Omastar <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · só em eventos · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Omastar no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/138.gif"><img class="sh" src="../public/sprites/pokemon/shiny/138.gif"></td>
+    <td class="nm"><b>#138 Omanyte</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 16</b> · <b class="k-heal">Limpeza 1.7%</b> · <b class="k-shield">Escudo 135</b><br><small>Orçamento 138 · Recarga 3.8s · HP do time +883</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/139.gif"><img class="sh" src="../public/sprites/pokemon/shiny/139.gif"></td>
+    <td class="nm"><b>#139 Omastar</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 26</b> · <b class="k-heal">Limpeza 3.3%</b> · <b class="k-shield">Escudo 221</b><br><small>Orçamento 260 · Recarga 3.3s · HP do time +1664</small></td>
+    <td class="ab"><b>Concha Espiral</b> — Início da batalha: o time ganha Escudo igual ao Escudo somado dos aliados adjacentes.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Kabuto → Kabutops <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · só em eventos · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Kabutops no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/140.gif"><img class="sh" src="../public/sprites/pokemon/shiny/140.gif"></td>
+    <td class="nm"><b>#140 Kabuto</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 14</b> · <b class="k-heal">Limpeza 1.7%</b> · <b class="k-shield">Escudo 118</b><br><small>Orçamento 138 · Recarga 3.3s · HP do time +883</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/141.gif"><img class="sh" src="../public/sprites/pokemon/shiny/141.gif"></td>
+    <td class="nm"><b>#141 Kabutops</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#6390f0">Água</span></td>
+    <td class="st"><b class="k-heal">Cura 21</b> · <b class="k-heal">Limpeza 3.3%</b> · <b class="k-shield">Escudo 181</b><br><small>Orçamento 260 · Recarga 2.7s · HP do time +1664</small></td>
+    <td class="ab"><b>Lâmina Antiga</b> — Ao atacar: +1 Dano permanentemente. Quando você ganha um item segurado: +6 Dano permanente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Aerodactyl <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · só em eventos · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/142.gif"><img class="sh" src="../public/sprites/pokemon/shiny/142.gif"></td>
+    <td class="nm"><b>#142 Aerodactyl</b><br><span class="tc" style="background:#b6a136">Pedra</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-shield">Escudo 77</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 200 · Recarga 1.5s · HP do time +1280</small></td>
+    <td class="ab"><b>Rocha Ancestral</b> — Início da batalha: +20 Escudo por aliado de Pedra e +1 Multicast se houver outro Voador.</td>
+  </tr></table></div><div class="line" style="border-left-color:#f08a24">
+  <div class="line-head">Articuno <span class="rar" style="color:#f08a24">Lendário</span> <small>₽60 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/144.gif"><img class="sh" src="../public/sprites/pokemon/shiny/144.gif"></td>
+    <td class="nm"><b>#144 Articuno</b><br><span class="tc" style="background:#96d9d6">Gelo</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-shock">Frio 1</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 288 · Recarga 2.6s · HP do time +1843</small></td>
+    <td class="ab"><b>Nevasca</b> — Início da batalha: desativa as habilidades Contínuas dos inimigos da mesma linha. Aliados de Gelo têm +20% vel. de recarga.</td>
+  </tr></table></div><div class="line" style="border-left-color:#f08a24">
+  <div class="line-head">Zapdos <span class="rar" style="color:#f08a24">Lendário</span> <small>₽60 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/145.gif"><img class="sh" src="../public/sprites/pokemon/shiny/145.gif"></td>
+    <td class="nm"><b>#145 Zapdos</b><br><span class="tc" style="background:#f7d02c">Elétrico</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-shock">Choque 2</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 288 · Recarga 2.2s · HP do time +1843</small></td>
+    <td class="ab"><b>Trovão</b> — Ao atacar: +50% vel. de recarga e +2 Choque nesta batalha.</td>
+  </tr></table></div><div class="line" style="border-left-color:#f08a24">
+  <div class="line-head">Moltres <span class="rar" style="color:#f08a24">Lendário</span> <small>₽60 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/146.gif"><img class="sh" src="../public/sprites/pokemon/shiny/146.gif"></td>
+    <td class="nm"><b>#146 Moltres</b><br><span class="tc" style="background:#ee8130">Fogo</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-burn">Queim. 12</b> · <b class="k-multi">Carga 1</b><br><small>Orçamento 288 · Recarga 2.4s · HP do time +1843</small></td>
+    <td class="ab"><b>Fênix</b> — Contínuo: tem Queimadura extra igual a 30% da Queimadura no inimigo.</td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Dratini → Dragonair → Dragonite <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Dragonair no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/147.gif"><img class="sh" src="../public/sprites/pokemon/shiny/147.gif"></td>
+    <td class="nm"><b>#147 Dratini</b><br><span class="tc" style="background:#6f35fc">Dragão</span></td>
+    <td class="st"><b class="k-dmg">Dano 166</b><br><small>Orçamento 138 · Recarga 5.4s · HP do time +883</small></td>
+    <td class="ab"><b>Fôlego de Dragão</b> — Ao atacar: carrega o aliado atrás em 1s (2x se for Dragão).<div class="shab">★ <b>Fôlego de Dragão ★</b> — Ao atacar: carrega o aliado atrás em 1s (2x se for Dragão). Recarga 20% mais rápida.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/148.gif"><img class="sh" src="../public/sprites/pokemon/shiny/148.gif"></td>
+    <td class="nm"><b>#148 Dragonair</b><br><span class="tc" style="background:#6f35fc">Dragão</span></td>
+    <td class="st"><b class="k-dmg">Dano 270</b><br><small>Orçamento 261 · Recarga 4.7s · HP do time +1670</small></td>
+    <td class="ab"><b>Aura Serena</b> — Contínuo: o aliado atrás aplica suas habilidades Contínuas +1 vez (+2 no Lv. 4).<div class="shab">★ <b>Aura Serena ★</b> — Contínuo: os aliados atrás E acima/abaixo aplicam suas habilidades Contínuas +1 vez.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/149.gif"><img class="sh" src="../public/sprites/pokemon/shiny/149.gif"></td>
+    <td class="nm"><b>#149 Dragonite</b><br><span class="tc" style="background:#6f35fc">Dragão</span> <span class="tc" style="background:#a98ff3">Voador</span></td>
+    <td class="st"><b class="k-dmg">Dano 290</b> · <b class="k-multi">Carga 2</b><br><small>Orçamento 469 · Recarga 4.3s · HP do time +3002</small></td>
+    <td class="ab"><b>Dragão Supremo</b> — Ao atacar: ativa as habilidades de Início de Batalha dos aliados adjacentes e aumenta a própria recarga em 4s nesta batalha.<div class="shab">★ <b>Dragão Supremo ★</b> — Ao atacar: ativa as habilidades de Início de Batalha dos aliados adjacentes (sem aumentar a própria recarga).</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#f08a24">
+  <div class="line-head">Mewtwo <span class="rar" style="color:#f08a24">Lendário</span> <small>₽60 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/150.gif"><img class="sh" src="../public/sprites/pokemon/shiny/150.gif"></td>
+    <td class="nm"><b>#150 Mewtwo</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 23</b> · <b class="k-multi">Eco 54.6%</b><br><small>Orçamento 337 · Recarga 1.5s · HP do time +2157</small></td>
+    <td class="ab"><b>Pressão</b> — Contínuo: todos os inimigos têm -25% de vel. de recarga. Aliados Sombrios ou com Punir têm +8 Punir.<div class="shab">★ <b>Pressão ★</b> — Contínuo: todos os inimigos têm -40% de vel. de recarga.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#e8435a">
+  <div class="line-head">Mew <span class="rar" style="color:#e8435a">Mítico</span> <small>₽80 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/151.gif"><img class="sh" src="../public/sprites/pokemon/shiny/151.gif"></td>
+    <td class="nm"><b>#151 Mew</b><br><span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-dmg">Dano 37</b> · <b class="k-multi">Eco 58.3%</b><br><small>Orçamento 360 · Recarga 2.2s · HP do time +2304</small></td>
+    <td class="ab"><b>Ancestral</b> — Contínuo: aliados SEM habilidade têm +2 Multicast e +30% de Dano. Mew conta como tendo todos os tipos dos aliados.<div class="shab">★ <b>Ancestral ★</b> — Contínuo: aliados SEM habilidade têm +3 Multicast e +40% de Dano. Mew conta como tendo todos os tipos dos aliados.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Pichu → Pikachu → Raichu <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Pikachu no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/172.gif"><img class="sh" src="../public/sprites/pokemon/shiny/172.gif"></td>
+    <td class="nm"><b>#172 Pichu</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 1</b><br><small>Orçamento 55 · Recarga 3.2s · HP do time +352</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Choque do Trovão ★</b> — Ao atacar: +1 Choque nesta batalha.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/25.gif"><img class="sh" src="../public/sprites/pokemon/shiny/25.gif"></td>
+    <td class="nm"><b>#025 Pikachu</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 1</b><br><small>Orçamento 108 · Recarga 2.4s · HP do time +691</small></td>
+    <td class="ab"><b>Estática</b> — Ao atacar: +1 Choque nesta batalha.<div class="shab">★ <b>Estática ★</b> — Ao atacar: +1 Choque nesta batalha. Recarga 20% mais rápida.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/26.gif"><img class="sh" src="../public/sprites/pokemon/shiny/26.gif"></td>
+    <td class="nm"><b>#026 Raichu</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 2</b><br><small>Orçamento 221 · Recarga 2.0s · HP do time +1414</small></td>
+    <td class="ab"><b>Para-raios</b> — Contínuo: o aliado atrás tem +100% de Choque.<div class="shab">★ <b>Para-raios ★</b> — Contínuo: os aliados atrás e à frente têm +100% de Choque.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Cleffa → Clefairy → Clefable <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Clefairy no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/173.gif"><img class="sh" src="../public/sprites/pokemon/shiny/173.gif"></td>
+    <td class="nm"><b>#173 Cleffa</b><br><span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 12</b> · <b class="k-heal">Bênção 4</b><br><small>Orçamento 59 · Recarga 4.2s · HP do time +378</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/35.gif"><img class="sh" src="../public/sprites/pokemon/shiny/35.gif"></td>
+    <td class="nm"><b>#035 Clefairy</b><br><span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 19</b> · <b class="k-heal">Bênção 7</b><br><small>Orçamento 109 · Recarga 3.8s · HP do time +698</small></td>
+    <td class="ab"><b>Dedo Mágico</b> — Ao atacar: efeito aleatório (+8 Dano; Cura ou Escudo 24; 2 Queimadura/Veneno/Choque/Frio; ou +2 permanente nos stats de um aliado).</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/36.gif"><img class="sh" src="../public/sprites/pokemon/shiny/36.gif"></td>
+    <td class="nm"><b>#036 Clefable</b><br><span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 32</b> · <b class="k-heal">Bênção 14</b><br><small>Orçamento 220 · Recarga 3.2s · HP do time +1408</small></td>
+    <td class="ab"><b>Dança da Lua</b> — Quando você usa um item: ganha +2 Bênção permanentemente.</td>
+  </tr></table></div><div class="line" style="border-left-color:#8e9aa6">
+  <div class="line-head">Igglybuff → Jigglypuff → Wigglytuff <span class="rar" style="color:#8e9aa6">Comum</span> <small>₽10 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Jigglypuff no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/174.gif"><img class="sh" src="../public/sprites/pokemon/shiny/174.gif"></td>
+    <td class="nm"><b>#174 Igglybuff</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 23</b> · <b class="k-heal">Bênção 1</b><br><small>Orçamento 53 · Recarga 4.2s · HP do time +575</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/39.gif"><img class="sh" src="../public/sprites/pokemon/shiny/39.gif"></td>
+    <td class="nm"><b>#039 Jigglypuff</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 36</b> · <b class="k-heal">Bênção 2</b><br><small>Orçamento 86 · Recarga 4.1s · HP do time +933</small></td>
+    <td class="ab"><b>Canção de Ninar</b> — Início da batalha: atrasa todos os inimigos em 1.5s.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/40.gif"><img class="sh" src="../public/sprites/pokemon/shiny/40.gif"></td>
+    <td class="nm"><b>#040 Wigglytuff</b><br><span class="tc" style="background:#a8a77a">Normal</span> <span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 66</b> · <b class="k-heal">Bênção 4</b><br><small>Orçamento 186 · Recarga 3.5s · HP do time +2017</small></td>
+    <td class="ab"><b>Fofura</b> — Contínuo: o time tem +80 de HP por Pokémon Normal ou Fada na equipe.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Tyrogue → Hitmonlee → Hitmonchan → Hitmontop <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui no Lv. 3: na coluna da frente vira Hitmonlee, no meio Hitmontop, atrás Hitmonchan.</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/236.gif"><img class="sh" src="../public/sprites/pokemon/shiny/236.gif"></td>
+    <td class="nm"><b>#236 Tyrogue</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 29</b> · <b class="k-dmg">Crít. 23.1%</b><br><small>Orçamento 57 · Recarga 3.8s · HP do time +365</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Treino Livre ★</b> — Sem habilidade. Recarga 20% mais rápida.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/106.gif"><img class="sh" src="../public/sprites/pokemon/shiny/106.gif"></td>
+    <td class="nm"><b>#106 Hitmonlee</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 53</b> · <b class="k-dmg">Crít. 70.5%</b><br><small>Orçamento 154 · Recarga 2.5s · HP do time +986</small></td>
+    <td class="ab"><b>Chute Alto</b> — Ao atacar: 30% de chance do golpe causar 3x. Contínuo: +8 Crítico por Lutador na equipe.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/107.gif"><img class="sh" src="../public/sprites/pokemon/shiny/107.gif"></td>
+    <td class="nm"><b>#107 Hitmonchan</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 58</b> · <b class="k-dmg">Crít. 62.5%</b><br><small>Orçamento 154 · Recarga 2.8s · HP do time +986</small></td>
+    <td class="ab"><b>Socos Elementais</b> — Ao atacar: aplica aleatoriamente 4 Queimadura, 2 Choque ou 3 Frio.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/237.gif"><img class="sh" src="../public/sprites/pokemon/shiny/237.gif"></td>
+    <td class="nm"><b>#237 Hitmontop</b><br><span class="tc" style="background:#c22e28">Lutador</span></td>
+    <td class="st"><b class="k-dmg">Dano 61</b> · <b class="k-dmg">Crít. 62.5%</b> · <b class="k-multi">Multicast 3</b><br><small>Orçamento 154 · Recarga 2.9s · HP do time +986</small></td>
+    <td class="ab"><b>Giro Triplo</b> — Contínuo: Multicast +2. Aliados Lutadores adjacentes têm +15 Crítico.</td>
+  </tr></table></div><div class="line" style="border-left-color:#5cb85c">
+  <div class="line-head">Smoochum → Jynx <span class="rar" style="color:#5cb85c">Incomum</span> <small>₽18 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui quando o time aplica Frio 25 vezes (ou no Lv. 3) → Jynx</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/238.gif"><img class="sh" src="../public/sprites/pokemon/shiny/238.gif"></td>
+    <td class="nm"><b>#238 Smoochum</b><br><span class="tc" style="background:#96d9d6">Gelo</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-multi">Eco 4.6%</b><br><small>Orçamento 82 · Recarga 3.0s · HP do time +525</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/124.gif"><img class="sh" src="../public/sprites/pokemon/shiny/124.gif"></td>
+    <td class="nm"><b>#124 Jynx</b><br><span class="tc" style="background:#96d9d6">Gelo</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-shock">Frio 1</b> · <b class="k-multi">Eco 8.7%</b><br><small>Orçamento 154 · Recarga 2.3s · HP do time +986</small></td>
+    <td class="ab"><b>Beijo Gelado</b> — Ao atacar: Desativa o inimigo oposto por 1s.</td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Elekid → Electabuzz → Electivire <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui quando o time aplica Choque 25 vezes (ou no Lv. 2) → Electabuzz</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/239.gif"><img class="sh" src="../public/sprites/pokemon/shiny/239.gif"></td>
+    <td class="nm"><b>#239 Elekid</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 1</b><br><small>Orçamento 112 · Recarga 2.3s · HP do time +717</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/125.gif"><img class="sh" src="../public/sprites/pokemon/shiny/125.gif"></td>
+    <td class="nm"><b>#125 Electabuzz</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 2</b><br><small>Orçamento 191 · Recarga 2.1s · HP do time +1222</small></td>
+    <td class="ab"><b>Punho Trovão</b> — Ao atacar: carrega os aliados Elétricos em 0.5s.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/466.gif"><img class="sh" src="../public/sprites/pokemon/shiny/466.gif"></td>
+    <td class="nm"><b>#466 Electivire</b><br><span class="tc" style="background:#f7d02c">Elétrico</span></td>
+    <td class="st"><b class="k-shock">Choque 8</b><br><small>Orçamento 420 · Recarga 2.3s · HP do time +2688</small></td>
+    <td class="ab"><b>Motor Elétrico</b> — Contínuo: +2 Choque para cada Pokémon Elétrico na equipe.<div class="shab">★ <b>Motor Elétrico ★</b> — Contínuo: +4 Choque e +5% vel. de recarga por Pokémon Elétrico na equipe.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Magby → Magmar → Magmortar <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui quando o time aplica Queimadura 25 vezes (ou no Lv. 2) → Magmar</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/240.gif"><img class="sh" src="../public/sprites/pokemon/shiny/240.gif"></td>
+    <td class="nm"><b>#240 Magby</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 8</b><br><small>Orçamento 114 · Recarga 2.6s · HP do time +730</small></td>
+    <td class="ab"><i>Sem habilidade</i></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/126.gif"><img class="sh" src="../public/sprites/pokemon/shiny/126.gif"></td>
+    <td class="nm"><b>#126 Magmar</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 12</b><br><small>Orçamento 193 · Recarga 2.4s · HP do time +1235</small></td>
+    <td class="ab"><b>Corpo de Chamas</b> — Início da batalha: aplica 8 Queimadura no inimigo, +4 por aliado de Fogo.</td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/467.gif"><img class="sh" src="../public/sprites/pokemon/shiny/467.gif"></td>
+    <td class="nm"><b>#467 Magmortar</b><br><span class="tc" style="background:#ee8130">Fogo</span></td>
+    <td class="st"><b class="k-burn">Queim. 28</b><br><small>Orçamento 420 · Recarga 2.6s · HP do time +2688</small></td>
+    <td class="ab"><b>Canhão de Lava</b> — Contínuo: aliados de Fogo adjacentes têm +4 Queimadura.<div class="shab">★ <b>Canhão de Lava ★</b> — Contínuo: TODOS os aliados de Fogo têm +5 Queimadura.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Mime Jr. → Mr. Mime → Mr. Rime <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Mr. Mime no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/439.gif"><img class="sh" src="../public/sprites/pokemon/shiny/439.gif"></td>
+    <td class="nm"><b>#439 Mime Jr.</b><br><span class="tc" style="background:#f95587">Psíquico</span> <span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 9</b> · <b class="k-multi">Eco 10.2%</b> · <b class="k-heal">Bênção 2</b><br><small>Orçamento 97 · Recarga 3.2s · HP do time +621</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Imitação ★</b> — Início da batalha: aplica a habilidade Contínua do aliado à frente mais 1 vez.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/122.gif"><img class="sh" src="../public/sprites/pokemon/shiny/122.gif"></td>
+    <td class="nm"><b>#122 Mr. Mime</b><br><span class="tc" style="background:#f95587">Psíquico</span> <span class="tc" style="background:#d685ad">Fada</span></td>
+    <td class="st"><b class="k-dmg">Dano 13</b> · <b class="k-multi">Eco 18.8%</b> · <b class="k-heal">Bênção 4</b><br><small>Orçamento 179 · Recarga 2.4s · HP do time +1146</small></td>
+    <td class="ab"><b>Barreira</b> — Início da batalha: o time ganha 120 de Escudo e os aliados adjacentes recebem Proteger. Contínuo: aliados Fada adjacentes têm +2 Bênção. Quando você usa um item: +10 Escudo permanente.<div class="shab">★ <b>Barreira ★</b> — Início da batalha: o time ganha 300 de Escudo e TODOS os aliados recebem Proteger. Quando você usa um item: +18 Escudo permanente.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/866.png"><img class="sh" src="../public/sprites/pokemon/shiny/866.png"></td>
+    <td class="nm"><b>#866 Mr. Rime</b><br><span class="tc" style="background:#96d9d6">Gelo</span> <span class="tc" style="background:#f95587">Psíquico</span></td>
+    <td class="st"><b class="k-shock">Frio 2</b> · <b class="k-multi">Eco 23%</b><br><small>Orçamento 405 · Recarga 2.9s · HP do time +2592</small></td>
+    <td class="ab"><b>Sapateado Gelado</b> — Ao atacar: aplica +3 Frio para cada aliado Psíquico.<div class="shab">★ <b>Sapateado Gelado ★</b> — Ao atacar: aplica +6 Frio para cada aliado Psíquico ou de Gelo.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#3d8fd6">
+  <div class="line-head">Happiny → Chansey → Blissey <span class="rar" style="color:#3d8fd6">Raro</span> <small>₽28 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Chansey no Lv. 2</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/440.gif"><img class="sh" src="../public/sprites/pokemon/shiny/440.gif"></td>
+    <td class="nm"><b>#440 Happiny</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 42</b><br><small>Orçamento 69 · Recarga 3.9s · HP do time +914</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Ovo Feliz ★</b> — Início da batalha: os aliados adjacentes recebem Proteger.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/113.gif"><img class="sh" src="../public/sprites/pokemon/shiny/113.gif"></td>
+    <td class="nm"><b>#113 Chansey</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 92</b><br><small>Orçamento 175 · Recarga 3.4s · HP do time +2317</small></td>
+    <td class="ab"><b>Ovo Sortudo</b> — Ao comprar: +1 ❤. A cada 2s: o time cura 25.<div class="shab">★ <b>Ovo Sortudo ★</b> — Ao comprar: +2 ❤. A cada 2s: o time cura 30. Início da batalha: aliados adjacentes recebem Proteger.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/242.gif"><img class="sh" src="../public/sprites/pokemon/shiny/242.gif"></td>
+    <td class="nm"><b>#242 Blissey</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 145</b><br><small>Orçamento 284 · Recarga 3.3s · HP do time +3760</small></td>
+    <td class="ab"><b>Felicidade</b> — Contínuo: o time recebe +40% de Cura.<div class="shab">★ <b>Felicidade ★</b> — Contínuo: o time recebe +70% de Cura. Início da batalha: TODOS os aliados recebem Proteger.</div></td>
+  </tr></table></div><div class="line" style="border-left-color:#9b5bd6">
+  <div class="line-head">Munchlax → Snorlax <span class="rar" style="color:#9b5bd6">Super Raro</span> <small>₽40 · fusão: 3 cópias Lv1 → Lv2</small></div>
+  <div class="evo">Evolui para Snorlax no Lv. 3</div>
+  <table class="dex"><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/446.gif"><img class="sh" src="../public/sprites/pokemon/shiny/446.gif"></td>
+    <td class="nm"><b>#446 Munchlax</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 100</b><br><small>Orçamento 144 · Recarga 4.5s · HP do time +1907</small></td>
+    <td class="ab"><i>Sem habilidade</i><div class="shab">★ <b>Apetite ★</b> — Quando você usa um item: +72 HP permanente.</div></td>
+  </tr><tr>
+    <td class="spr"><img src="../public/sprites/pokemon/143.gif"><img class="sh" src="../public/sprites/pokemon/shiny/143.gif"></td>
+    <td class="nm"><b>#143 Snorlax</b><br><span class="tc" style="background:#a8a77a">Normal</span></td>
+    <td class="st"><b class="k-dmg">Dano 149</b><br><small>Orçamento 248 · Recarga 3.9s · HP do time +3284</small></td>
+    <td class="ab"><b>Gordura</b> — Contínuo: o time tem +300 de HP, +100 por Pokémon Normal. A cada 6s: cura 3% do HP do time.<div class="shab">★ <b>Gordura ★</b> — Contínuo: o time tem +360 de HP. A cada 4s: cura 4% do HP do time.</div></td>
+  </tr></table></div></section>
+<section id="itens-seg"><h2>8. Itens segurados (88)</h2><p>Permanentes. Vêm de prêmios (vitória, fusão Lv3, eventos). A raridade do prêmio segue as chances do Mart. "Único" = só um por run. Cada tipo tem pelo menos 2 itens que reforçam a sua mecânica (um Incomum e uma Placa Rara ×1,25).</p>
+<table class="t"><tr class="grp"><td colspan="3"><span class="rar" style="color:#8e9aa6">Comum</span></td></tr><tr><td class="ic"><img src="../public/sprites/items/silk-scarf.png"></td><td><b>Lenço de Seda</b></td><td>Seus Pokémon têm +5 Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/macho-brace.png"></td><td><b>Macho Brace</b></td><td>+200 de HP máximo para o time.</td></tr><tr><td class="ic"><img src="../public/sprites/items/nugget.png"></td><td><b>Nugget</b></td><td>+₽3 de renda por dia.</td></tr><tr><td class="ic"><img src="../public/sprites/items/amulet-coin.png"></td><td><b>Amulet Coin</b></td><td>Na vitória, ganhe ₽8.</td></tr><tr><td class="ic"><img src="../public/sprites/items/quick-claw.png"></td><td><b>Garra Rápida</b></td><td>Seus Pokémon da coluna de trás têm +6% de vel. de recarga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/muscle-band.png"></td><td><b>Faixa Muscular</b></td><td>Na vitória, seu time ganha +4 Dano permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/oran-berry.png"></td><td><b>Fruta Oran</b></td><td>Seus Pokémon têm +4 Dano para cada tipo diferente no time.</td></tr><tr><td class="ic"><img src="../public/sprites/items/soothe-bell.png"></td><td><b>Sino Calmante</b></td><td>Início da batalha: um Pokémon aleatório ganha +4% de vel. de recarga permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/smoke-ball.png"></td><td><b>Bola de Fumaça</b></td><td>Na próxima derrota, ganhe um prêmio de item segurado. (some depois)</td></tr><tr><td class="ic"><img src="../public/sprites/items/big-root.png"></td><td><b>Raiz Grande</b></td><td>Seus Pokémon têm +10% de Cura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/bicycle.png"></td><td><b>Bicicleta</b> <small>(único)</small></td><td>1 reroll grátis por dia.</td></tr><tr class="grp"><td colspan="3"><span class="rar" style="color:#5cb85c">Incomum</span></td></tr><tr><td class="ic"><img src="../public/sprites/items/charcoal.png"></td><td><b>Carvão</b></td><td>Seus Pokémon de Fogo têm +3 Queimadura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/mystic-water.png"></td><td><b>Água Mística</b></td><td>Seus Pokémon de Água têm +12 Cura e +5 Limpeza.</td></tr><tr><td class="ic"><img src="../public/sprites/items/miracle-seed.png"></td><td><b>Semente Milagrosa</b></td><td>Seus Pokémon de Planta têm +3 Crescimento.</td></tr><tr><td class="ic"><img src="../public/sprites/items/magnet.png"></td><td><b>Ímã</b></td><td>Seus Pokémon Elétricos têm +2 Choque.</td></tr><tr><td class="ic"><img src="../public/sprites/items/poison-barb.png"></td><td><b>Farpa Venenosa</b></td><td>Seus Pokémon de Veneno têm +3 Veneno.</td></tr><tr><td class="ic"><img src="../public/sprites/items/hard-stone.png"></td><td><b>Pedra Dura</b></td><td>Seus Pokémon de Pedra têm +25 Escudo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/black-belt.png"></td><td><b>Faixa Preta</b></td><td>Seus Pokémon Lutadores têm +15 Crítico.</td></tr><tr><td class="ic"><img src="../public/sprites/items/sharp-beak.png"></td><td><b>Bico Afiado</b></td><td>Seus Pokémon Voadores têm +3 Carga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/soft-sand.png"></td><td><b>Areia Macia</b></td><td>Seus Pokémon de Terra perfuram 3x (em vez de 2x).</td></tr><tr><td class="ic"><img src="../public/sprites/items/spell-tag.png"></td><td><b>Etiqueta Maldita</b></td><td>Seus Pokémon Fantasma têm ×1,25 de Dano Espectral e +5% por nocaute na batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/never-melt-ice.png"></td><td><b>Gelo Eterno</b></td><td>Seus Pokémon de Gelo têm +4 Frio.</td></tr><tr><td class="ic"><img src="../public/sprites/items/twisted-spoon.png"></td><td><b>Colher Torta</b></td><td>Seus Pokémon Psíquicos têm +30 Eco.</td></tr><tr><td class="ic"><img src="../public/sprites/items/silver-powder.png"></td><td><b>Pó Prateado</b></td><td>Seus Pokémon Inseto têm +1 Multicast.</td></tr><tr><td class="ic"><img src="../public/sprites/items/silk-scarf.png"></td><td><b>Seda Normal</b></td><td>Seus Pokémon Normais têm +10 Dano e +100 HP.</td></tr><tr><td class="ic"><img src="../public/sprites/items/metal-coat.png"></td><td><b>Revestimento Metálico</b></td><td>Seus Pokémon de Aço têm +8 Armadura. Onix e Scyther evoluem no início da próxima batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/black-glasses.png"></td><td><b>Óculos Escuros</b></td><td>Seus Pokémon Sombrios têm +5 Punir.</td></tr><tr><td class="ic"><img src="../public/sprites/items/fairy-feather.png"></td><td><b>Pena Fada</b></td><td>Seus Pokémon Fada têm +4 Bênção.</td></tr><tr><td class="ic"><img src="../public/sprites/items/coin-case.png"></td><td><b>Coin Case</b> <small>(único)</small></td><td>Juros em dobro: +₽1 a cada ₽10 guardados, além dos juros normais.</td></tr><tr><td class="ic"><img src="../public/sprites/items/exp-share.png"></td><td><b>Exp. Share</b></td><td>Quando um Pokémon sobe de nível por fusão, ganha +10% de vel. de recarga permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/choice-band.png"></td><td><b>Faixa de Escolha</b></td><td>O Pokémon do meio da linha de cima tem +25 Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/leftovers.png"></td><td><b>Restos</b></td><td>A cada 3s de batalha, o time cura 2% do HP máximo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/card-key.png"></td><td><b>Cartão-Chave</b></td><td>Você pode usar +1 item por dia.</td></tr><tr><td class="ic"><img src="../public/sprites/items/silph-scope.png"></td><td><b>Silph Scope</b> <small>(único)</small></td><td>Revela o time do próximo rival.</td></tr><tr><td class="ic"><img src="../public/sprites/items/dubious-disc.png"></td><td><b>Disco Duvidoso</b></td><td>O próximo item segurado que você ganhar vem em dobro. Porygon2 evolui no início da próxima batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/zoom-lens.png"></td><td><b>Lente de Zoom</b></td><td>Início da batalha: seus Pokémon da coluna de trás ganham +6 Dano permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/protector.png"></td><td><b>Protetor</b></td><td>Início da batalha: o time ganha Escudo igual a 8% do HP máximo. Rhydon evolui no início da próxima batalha.</td></tr><tr class="grp"><td colspan="3"><span class="rar" style="color:#3d8fd6">Raro</span></td></tr><tr><td class="ic"><img src="../public/sprites/items/dragon-fang.png"></td><td><b>Presa de Dragão</b></td><td>Seus Pokémon Dragão têm ×1,3 de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/thick-club.png"></td><td><b>Osso Grosso</b></td><td>Seus Pokémon com recarga de 4s ou mais têm ×1,4 de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/wide-lens.png"></td><td><b>Lente Ampla</b></td><td>Início da batalha: seus Pokémon da coluna da frente ganham +10 Escudo e +10 Cura permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/reaper-cloth.png"></td><td><b>Pano Sinistro</b></td><td>Quando qualquer Pokémon é nocauteado: seus Pokémon ganham +5% de Dano nesta batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/electirizer.png"></td><td><b>Eletrizador</b></td><td>Seus Pokémon Elétricos têm +15% de vel. de recarga. Electabuzz evolui no início da próxima batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/magmarizer.png"></td><td><b>Magmarizador</b></td><td>Seus Pokémon de Fogo têm ×1,3 de Queimadura. Magmar evolui no início da próxima batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/sea-incense.png"></td><td><b>Incenso do Mar</b></td><td>As próximas 5 lojas só terão Pokémon Raros.</td></tr><tr><td class="ic"><img src="../public/sprites/items/life-orb.png"></td><td><b>Life Orb</b></td><td>Início da batalha: seus Pokémon ganham +8 Dano permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/scope-lens.png"></td><td><b>Lente de Mira</b></td><td>Seus Pokémon com recarga de 3.5s ou mais têm ×1,25 de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/shell-bell.png"></td><td><b>Sino de Concha</b></td><td>Você recebe +25% de Cura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/star-piece.png"></td><td><b>Pedaço de Estrela</b></td><td>Você recebe +25% de Escudo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/focus-band.png"></td><td><b>Faixa de Foco</b></td><td>Na próxima derrota, ganhe ₽40. (some depois)</td></tr><tr><td class="ic"><img src="../public/sprites/items/linking-cord.png"></td><td><b>Cabo de Troca</b> <small>(único)</small></td><td>Todos os Pokémon do time contam como adjacentes entre si.</td></tr><tr><td class="ic"><img src="../public/sprites/items/choice-scarf.png"></td><td><b>Lenço de Escolha</b></td><td>Seus Pokémon da coluna da frente têm +15% de vel. de recarga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/expert-belt.png"></td><td><b>Cinto Especialista</b></td><td>Pokémon que não compartilham tipo com nenhum aliado têm +25% de vel. de recarga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/big-nugget.png"></td><td><b>Nugget Grande</b></td><td>+₽10 de renda por dia.</td></tr><tr><td class="ic"><img src="../public/sprites/items/flame-plate.png"></td><td><b>Placa Chama</b></td><td>Seus Pokémon de Fogo têm ×1,25 de Queimadura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/splash-plate.png"></td><td><b>Placa Respingo</b></td><td>Seus Pokémon de Água têm ×1,25 de Cura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/zap-plate.png"></td><td><b>Placa Raio</b></td><td>Seus Pokémon Elétricos têm ×1,25 de Choque.</td></tr><tr><td class="ic"><img src="../public/sprites/items/meadow-plate.png"></td><td><b>Placa Prado</b></td><td>Seus Pokémon de Planta têm ×1,25 de Crescimento.</td></tr><tr><td class="ic"><img src="../public/sprites/items/icicle-plate.png"></td><td><b>Placa Gelo</b></td><td>Seus Pokémon de Gelo têm ×1,25 de Frio.</td></tr><tr><td class="ic"><img src="../public/sprites/items/fist-plate.png"></td><td><b>Placa Punho</b></td><td>Seus Pokémon Lutadores têm ×1,25 de Crítico.</td></tr><tr><td class="ic"><img src="../public/sprites/items/toxic-plate.png"></td><td><b>Placa Tóxica</b></td><td>Seus Pokémon de Veneno têm ×1,25 de Veneno.</td></tr><tr><td class="ic"><img src="../public/sprites/items/earth-plate.png"></td><td><b>Placa Terra</b></td><td>Seus Pokémon de Terra têm ×1,25 de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/sky-plate.png"></td><td><b>Placa Céu</b></td><td>Seus Pokémon Voadores têm ×1,25 de Carga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/mind-plate.png"></td><td><b>Placa Mente</b></td><td>Seus Pokémon Psíquicos têm ×1,25 de Eco.</td></tr><tr><td class="ic"><img src="../public/sprites/items/insect-plate.png"></td><td><b>Placa Inseto</b></td><td>Seus Pokémon Inseto têm ×1,25 de Enxame.</td></tr><tr><td class="ic"><img src="../public/sprites/items/stone-plate.png"></td><td><b>Placa Pedra</b></td><td>Seus Pokémon de Pedra têm ×1,25 de Escudo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/spooky-plate.png"></td><td><b>Placa Assombrada</b></td><td>Seus Pokémon Fantasma têm ×1,25 de Dano Espectral.</td></tr><tr><td class="ic"><img src="../public/sprites/items/draco-plate.png"></td><td><b>Placa Draco</b></td><td>Seus Pokémon Dragão têm ×1,25 de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/iron-plate.png"></td><td><b>Placa Ferro</b></td><td>Seus Pokémon de Aço têm ×1,25 de Armadura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/dread-plate.png"></td><td><b>Placa Medo</b></td><td>Seus Pokémon Sombrios têm ×1,25 de Punir.</td></tr><tr><td class="ic"><img src="../public/sprites/items/pixie-plate.png"></td><td><b>Placa Fada</b></td><td>Seus Pokémon Fada têm ×1,25 de Bênção.</td></tr><tr><td class="ic"><img src="../public/sprites/items/blank-plate.png"></td><td><b>Placa Branca</b></td><td>Seus Pokémon Normais têm ×1,25 de Dano e HP.</td></tr><tr class="grp"><td colspan="3"><span class="rar" style="color:#9b5bd6">Super Raro</span></td></tr><tr><td class="ic"><img src="../public/sprites/items/member-card.png"></td><td><b>Cartão de Sócio</b> <small>(único)</small></td><td>A loja não vende mais Pokémon Comuns nem Incomuns.</td></tr><tr><td class="ic"><img src="../public/sprites/items/quick-powder.png"></td><td><b>Pó Veloz</b></td><td>O Pokémon do meio da linha de cima tem +25% de vel. de recarga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/dragon-scale.png"></td><td><b>Escama de Dragão</b></td><td>Seus Pokémon Dragão têm ×1,6 de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/items/pure-incense.png"></td><td><b>Incenso Puro</b></td><td>As próximas 5 lojas só terão Pokémon Super Raros.</td></tr><tr><td class="ic"><img src="../public/sprites/items/kings-rock.png"></td><td><b>King's Rock</b></td><td>Seus Pokémon Voadores têm +1 Multicast. Slowpoke e Poliwhirl evoluem (Slowking/Politoed) no início da próxima batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/choice-specs.png"></td><td><b>Óculos de Escolha</b></td><td>Seus Pokémon têm +10% de vel. de recarga.</td></tr><tr><td class="ic"><img src="../public/sprites/items/lucky-egg.png"></td><td><b>Ovo da Sorte</b></td><td>O próximo Pokémon que você comprar sobe 1 nível. (some depois)</td></tr><tr><td class="ic"><img src="../public/sprites/items/big-pearl.png"></td><td><b>Pérola Grande</b> <small>(único)</small></td><td>+25% de HP máximo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/light-ball.png"></td><td><b>Light Ball</b></td><td>Seus Pokémon Elétricos têm ×1,5 de Choque.</td></tr><tr class="grp"><td colspan="3"><span class="rar" style="color:#f08a24">Lendário</span></td></tr><tr><td class="ic"><img src="../public/sprites/items/razor-fang.png"></td><td><b>Presa Afiada</b> <small>(único)</small></td><td>O Pokémon do meio da linha de cima tem +1 Multicast.</td></tr><tr><td class="ic"><img src="../public/sprites/items/luck-incense.png"></td><td><b>Incenso da Sorte</b></td><td>As próximas 5 lojas só terão Pokémon Lendários.</td></tr><tr><td class="ic"><img src="../public/sprites/items/metronome.png"></td><td><b>Metrônomo</b></td><td>Quando seus Pokémon atacam, ganham +8 Dano nesta batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/items/master-ball.png"></td><td><b>Master Ball</b> <small>(único)</small></td><td>Antes de cada batalha, seus Pokémon Comuns e Incomuns sobem para o Lv. 3.</td></tr><tr><td class="ic"><img src="../public/sprites/items/comet-shard.png"></td><td><b>Fragmento de Cometa</b></td><td>+2000 de HP máximo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/relic-gold.png"></td><td><b>Ouro Antigo</b></td><td>+₽25 de renda por dia.</td></tr><tr><td class="ic"><img src="../public/sprites/items/odd-keystone.png"></td><td><b>Anotações de Pesquisa</b> <small>(único)</small></td><td>Pokémon Lendários aparecem muito mais na loja.</td></tr><tr><td class="ic"><img src="../public/sprites/items/red-shard.png"></td><td><b>Joia Misteriosa</b></td><td>Seus Pokémon têm ×1,2 de Dano.</td></tr></table></section>
+<section id="itens"><h2>9. Itens da loja (29)</h2><p>Ocupam o 5º slot da loja. Usados na hora (1 por dia). Usar um item dispara os gatilhos "Quando você usa um item" (Clefable, Persian, Lickilicky, Mr. Mime, Porygon, Munchlax ★).</p>
+<table class="t"><tr><td class="ic"><img src="../public/sprites/items/repel.png"></td><td><b>Repelente</b><br><span class="rar" style="color:#8e9aa6">Comum</span></td><td>Grátis</td><td>Abaixa o rank da loja em 1 por hoje e rerrola a loja.</td></tr><tr><td class="ic"><img src="../public/sprites/items/lava-cookie.png"></td><td><b>Biscoito de Lava</b><br><span class="rar" style="color:#8e9aa6">Comum</span></td><td>Grátis</td><td>Dá +5 Dano permanente a 2 Pokémon aleatórios.</td></tr><tr><td class="ic"><img src="../public/sprites/items/coupon-1.png"></td><td><b>Cupom</b><br><span class="rar" style="color:#8e9aa6">Comum</span></td><td>Grátis</td><td>Os Pokémon da loja custam ₽3 a menos hoje.</td></tr><tr><td class="ic"><img src="../public/sprites/items/soda-pop.png"></td><td><b>Refrigerante</b><br><span class="rar" style="color:#8e9aa6">Comum</span></td><td>Grátis</td><td>Ganhe 1 reroll grátis.</td></tr><tr><td class="ic"><img src="../public/sprites/items/lemonade.png"></td><td><b>Limonada</b><br><span class="rar" style="color:#8e9aa6">Comum</span></td><td>Grátis</td><td>Se você vencer a próxima batalha, ganhe ₽15.</td></tr><tr><td class="ic"><img src="../public/sprites/items/poke-ball.png"></td><td><b>Poké Ball</b><br><span class="rar" style="color:#8e9aa6">Comum</span></td><td>₽5</td><td>Captura de graça um Pokémon aleatório da loja.</td></tr><tr><td class="ic"><img src="../public/sprites/items/lure.png"></td><td><b>Isca</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽20</td><td>Sobe o rank da loja em 1 permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/protein.png"></td><td><b>Proteína</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>Grátis</td><td>Seus Pokémon ganham +5 Dano permanentemente.</td></tr><tr><td class="ic"><img src="../public/sprites/items/moomoo-milk.png"></td><td><b>Leite Moomoo</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽1</td><td>O Pokémon de baixo à direita ganha +8 Dano. Você pode usar +1 item hoje.</td></tr><tr><td class="ic"><img src="../public/sprites/items/fire-stone.png"></td><td><b>Pedra de Fogo</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Vulpix, Growlithe ou Eevee (Flareon).</td></tr><tr><td class="ic"><img src="../public/sprites/items/water-stone.png"></td><td><b>Pedra d'Água</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Shellder, Staryu, Eevee (Vaporeon) ou Poliwhirl antes da hora.</td></tr><tr><td class="ic"><img src="../public/sprites/items/thunder-stone.png"></td><td><b>Pedra do Trovão</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Eevee (Jolteon) ou Pikachu antes da hora.</td></tr><tr><td class="ic"><img src="../public/sprites/items/leaf-stone.png"></td><td><b>Pedra da Folha</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Exeggcute, Gloom (Vileplume) ou Eevee (Leafeon) antes da hora.</td></tr><tr><td class="ic"><img src="../public/sprites/items/ice-stone.png"></td><td><b>Pedra do Gelo</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Eevee em Glaceon.</td></tr><tr><td class="ic"><img src="../public/sprites/items/black-augurite.png"></td><td><b>Augurita Negra</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Scyther em Kleavor.</td></tr><tr><td class="ic"><img src="../public/sprites/items/tm-normal.png"></td><td><b>TM de Tipo</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽8</td><td>Escolha um Pokémon: ele ganha um tipo aleatório que ainda não tem (até 3 tipos) e o stat dele.</td></tr><tr><td class="ic"><img src="../public/sprites/items/moon-stone.png"></td><td><b>Pedra da Lua</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Clefairy, Jigglypuff ou Nidorina/Nidorino antes da hora.</td></tr><tr><td class="ic"><img src="../public/sprites/items/sun-stone.png"></td><td><b>Pedra do Sol</b><br><span class="rar" style="color:#5cb85c">Incomum</span></td><td>₽5</td><td>Evolui Gloom em Bellossom.</td></tr><tr><td class="ic"><img src="../public/sprites/items/hp-up.png"></td><td><b>HP Up</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>Grátis</td><td>+200 de HP máximo para o time (permanente).</td></tr><tr><td class="ic"><img src="../public/sprites/items/iron.png"></td><td><b>Ferro</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>Grátis</td><td>Seus Pokémon de Pedra ganham +20 Escudo.</td></tr><tr><td class="ic"><img src="../public/sprites/items/calcium.png"></td><td><b>Cálcio</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>Grátis</td><td>Seus Pokémon de Água ganham +10 Cura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/zinc.png"></td><td><b>Zinco</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>Grátis</td><td>Seus Pokémon de Veneno ganham +1 Veneno.</td></tr><tr><td class="ic"><img src="../public/sprites/items/carbos.png"></td><td><b>Carbos</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>Grátis</td><td>Seus Pokémon de Fogo ganham +1 Queimadura.</td></tr><tr><td class="ic"><img src="../public/sprites/items/pp-up.png"></td><td><b>PP Up</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>Grátis</td><td>Seus Pokémon Elétricos ganham +1 Choque.</td></tr><tr><td class="ic"><img src="../public/sprites/items/rare-candy.png"></td><td><b>Doce Raro</b><br><span class="rar" style="color:#3d8fd6">Raro</span></td><td>₽30</td><td>Sobe de nível um Pokémon Lv. 1 aleatório (Comum ou Incomum).</td></tr><tr><td class="ic"><img src="../public/sprites/items/great-ball.png"></td><td><b>Great Ball</b><br><span class="rar" style="color:#9b5bd6">Super Raro</span></td><td>₽35</td><td>Ganhe um Pokémon Super Raro aleatório.</td></tr><tr><td class="ic"><img src="../public/sprites/items/old-gateau.png"></td><td><b>Bolo Antigo</b><br><span class="rar" style="color:#f08a24">Lendário</span></td><td>₽60</td><td>Sobe um Pokémon Lv. 3 aleatório para o Lv. 4.</td></tr><tr><td class="ic"><img src="../public/sprites/items/ultra-ball.png"></td><td><b>Ultra Ball</b><br><span class="rar" style="color:#f08a24">Lendário</span></td><td>₽60</td><td>Ganhe um Pokémon Lendário aleatório.</td></tr><tr><td class="ic"><img src="../public/sprites/items/shiny-stone.png"></td><td><b>Pedra Brilhante</b><br><span class="rar" style="color:#e8435a">Mítico</span></td><td>₽1</td><td>Torna um Pokémon aleatório SHINY. Você pode usar +1 item hoje.</td></tr></table></section>
+<section id="treinadores"><h2>10. Treinadores (30)</h2><table class="t"><tr><td class="ic"><img src="../public/sprites/trainers/youngster.png" class="tr"></td><td><b>Youngster</b></td><td>Ganha 3 rerolls grátis todo dia.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/bugcatcher.png" class="tr"></td><td><b>Bug Catcher</b></td><td>O primeiro Pokémon Inseto que você compra no dia é grátis.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/fisherman.png" class="tr"></td><td><b>Fisherman</b></td><td>Ganha um Magikarp todo dia. (5 Magikarp = Gyarados!)</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/swimmer.png" class="tr"></td><td><b>Swimmer</b></td><td>Ganha um Pokémon de Água aleatório todo dia.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/gentleman.png" class="tr"></td><td><b>Gentleman</b></td><td>A partir do dia 4, a loja não tem mais Pokémon Comuns nem Incomuns.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/beauty.png" class="tr"></td><td><b>Beauty</b></td><td>Pokémon SHINY aparecem 4x mais.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/lady.png" class="tr"></td><td><b>Lady</b></td><td>Rank da loja +2 e +₽10 no início.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/burglar.png" class="tr"></td><td><b>Burglar</b></td><td>Prêmios de itens segurados oferecem só 2 opções, mas você leva as duas.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/ruinmaniac.png" class="tr"></td><td><b>Ruin Maniac</b></td><td>Prêmios de itens segurados vêm 1 raridade acima.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/twins.png" class="tr"></td><td><b>Twins</b></td><td>Quando uma fusão chega ao Lv. 3, ganha uma cópia exata (que vende por ₽0).</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/scientist.png" class="tr"></td><td><b>Scientist</b></td><td>No dia 7, transforma o time ativo em Pokémon Lendários Lv. 1 aleatórios.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/gambler.png" class="tr"></td><td><b>Gambler</b></td><td>No dia 9, ganha um Mew e ₽30.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/pokemonranger.png" class="tr"></td><td><b>Pokémon Ranger</b></td><td>Começa com um Pokémon Incomum e ganha outra cópia dele a cada 2 dias.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/rocker.png" class="tr"></td><td><b>Rocker</b></td><td>Se você tiver exatamente 1 Pokémon Elétrico no time, ele tem +150% de Choque.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/supernerd.png" class="tr"></td><td><b>Super Nerd</b></td><td>Seus Pokémon de Veneno têm +3 Veneno. Aumenta +1 sempre que um Pokémon sobe de nível.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/blackbelt.png" class="tr"></td><td><b>Black Belt</b></td><td>Se você tiver exatamente 1 Lutador no time, ele tem +100% de Dano.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/channeler.png" class="tr"></td><td><b>Channeler</b></td><td>Quando um aliado é nocauteado, o resto do time ganha +12% de Dano nesta batalha.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/tamer.png" class="tr"></td><td><b>Domador</b></td><td>Seus Pokémon SEM habilidade têm +40% de Dano e de HP.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/biker.png" class="tr"></td><td><b>Biker</b></td><td>Renovar a loja custa ₽1 e dá +2 Dano permanente a um Pokémon aleatório.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/aromalady.png" class="tr"></td><td><b>Aroma Lady</b></td><td>Crescimento dos Pokémon de Planta +50% e o time tem +300 de HP.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/breeder.png" class="tr"></td><td><b>Criador Pokémon</b></td><td>Quando um Pokémon chega ao Lv. 3, ganha o tipo primário de um aliado adjacente (até 3 tipos).</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/chef.png" class="tr"></td><td><b>Chef de Celadon</b></td><td>Início do dia: um Pokémon aleatório do time ganha um tipo aleatório (até 3 tipos).</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/brock.png" class="tr"></td><td><b>Líder Brock</b><br><small>libera com 1 run(s) vencida(s)</small></td><td>Começa a batalha com Escudo de 15% do HP. Escudo dos Pokémon de Pedra +40%.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/misty.png" class="tr"></td><td><b>Líder Misty</b><br><small>libera com 2 run(s) vencida(s)</small></td><td>Cura e Limpeza dos Pokémon de Água +40%.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/ltsurge.png" class="tr"></td><td><b>Líder Lt. Surge</b><br><small>libera com 3 run(s) vencida(s)</small></td><td>Choque dos Pokémon Elétricos +40%.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/erika.png" class="tr"></td><td><b>Líder Erika</b><br><small>libera com 4 run(s) vencida(s)</small></td><td>Crescimento dos Pokémon de Planta +40%; Planta aparece 2x mais.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/koga.png" class="tr"></td><td><b>Líder Koga</b><br><small>libera com 5 run(s) vencida(s)</small></td><td>Veneno dos Pokémon de Veneno +40%.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/sabrina.png" class="tr"></td><td><b>Líder Sabrina</b><br><small>libera com 6 run(s) vencida(s)</small></td><td>Eco dos Pokémon Psíquicos +40%.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/blaine.png" class="tr"></td><td><b>Líder Blaine</b><br><small>libera com 7 run(s) vencida(s)</small></td><td>Queimadura dos Pokémon de Fogo +40%.</td></tr><tr><td class="ic"><img src="../public/sprites/trainers/giovanni.png" class="tr"></td><td><b>Líder Giovanni</b><br><small>libera com 8 run(s) vencida(s)</small></td><td>+₽8 por dia. Pokémon de Terra perfuram 3x e têm +25% de Dano.</td></tr></table></section>
+<section id="encontros"><h2>11. Encontros (21)</h2><div class="ev"><b>Caçador de Insetos</b> <small>dia 3</small><p><i>Um caçador de insetos quer dividir com você um dos insetos que pegou hoje.</i></p><ul><li><b>Pegar o casulo</b> → Ganhe um Caterpie Lv. 2 (já vira Metapod)</li><li><b>Pegar o besouro</b> → Ganhe um Pinsir com +20 Dano</li><li><b>Pegar o louva-a-deus</b> → Ganhe um Scyther com +1 Multicast</li></ul></div><div class="ev"><b>Ninho do Dragão</b> <small>dia 3</small><p><i>Você encontra o ninho de um dragão. Pegue algo antes que ele volte!</i></p><ul><li><b>Pegar o ovo</b> → Um Dratini Lv. 2 choca em 2 dias</li><li><b>Pegar a presa</b> → Ganhe o item segurado Presa de Dragão</li><li><b>Pegar as moedas</b> → Ganhe ₽20</li></ul></div><div class="ev"><b>Árvore de Frutas</b> <small>dia 3</small><p><i>No meio da floresta há uma árvore com uma fruta furta-cor.</i></p><ul><li><b>Dar a um Pokémon</b> → Torna um Pokémon aleatório SHINY</li><li><b>Guardar</b> → Ganhe o item segurado Fruta Oran</li><li><b>Vender no mercado</b> → Ganhe ₽20</li></ul></div><div class="ev"><b>Vendedor de Magikarp</b> <small>dia 3</small><p><i>Um senhor suspeito no Centro Pokémon oferece "um negócio imperdível".</i></p><ul><li><b>Comprar o lote</b> (₽10) → Ganhe 3 Magikarp</li><li><b>Comprar o dourado</b> (₽5) → Ganhe um Magikarp SHINY</li><li><b>Denunciar o golpe</b> → Ganhe ₽15 de recompensa</li></ul></div><div class="ev"><b>Game Corner</b> <small>dia 3</small><p><i>As máquinas de Celadon piscam. Um senhor jura que a máquina do canto está "quente".</i></p><ul><li><b>Apostar</b> (₽10) → 50% de chance de ganhar ₽30</li><li><b>Trocar fichas pelo prêmio</b> (₽15) → Ganhe um Porygon</li><li><b>Procurar fichas no chão</b> → Ganhe ₽8</li></ul></div><div class="ev"><b>Day Care</b> <small>dia 6</small><p><i>O casal do Day Care oferece ajuda. "Seus Pokémon parecem cheios de energia!"</i></p><ul><li><b>Deixar treinando</b> → Um Pokémon Lv. 1 aleatório sobe para o Lv. 2</li><li><b>Pegar o ovo achado</b> → Um Pokémon Raro Lv. 1 choca amanhã</li><li><b>Ajudar no trabalho</b> → Ganhe ₽30</li></ul></div><div class="ev"><b>Equipe Rocket</b> <small>dia 9</small><p><i>"Prepare-se para encrenca!" Um recruta oferece mercadoria roubada... ou briga.</i></p><ul><li><b>Comprar a mercadoria</b> (₽40) → Ganhe um item segurado Lendário</li><li><b>Enfrentar o recruta</b> → Perca 1 ❤ e ganhe um prêmio Super Raro</li><li><b>Correr</b> → Nada acontece</li></ul></div><div class="ev"><b>Pokémaníaco</b> <small>dia 3</small><p><i>Um colecionador fanático quer trocar Pokémon com você. "Eu dou um bem raro!"</i></p><ul><li><b>Trocar um Pokémon</b> → Troca um Pokémon Lv. 1 aleatório por um de raridade maior</li><li><b>Vender informações</b> → Ganhe 2 rerolls grátis hoje e amanhã</li><li><b>Vender a coleção dele</b> → Ganhe ₽18</li></ul></div><div class="ev"><b>Bill no PC</b> <small>dia 6</small><p><i>Bill, o criador do PC, deixa você usar a máquina de clonagem experimental.</i></p><ul><li><b>Clonar</b> → Ganhe uma cópia Lv. 1 de um Pokémon aleatório seu (ajuda nas fusões)</li><li><b>Ajudar na pesquisa</b> → Ganhe o item segurado Disco Duvidoso</li><li><b>Consertar o PC</b> → Ganhe ₽35</li></ul></div><div class="ev"><b>Viajante de Johto</b> <small>dia 9</small><p><i>Um treinador vindo de Johto traz ovos e objetos que você nunca viu.</i></p><ul><li><b>Pegar um ovo</b> → Um bebê Pokémon SHINY Lv. 2 choca amanhã</li><li><b>Revestimento Metálico</b> → Ganhe o item segurado Revestimento Metálico</li><li><b>Pedra do Rei</b> → Ganhe o item segurado King's Rock</li></ul></div><div class="ev"><b>Fósseis de Mt. Moon</b> <small>dia 6</small><p><i>Dois fósseis brilham no fundo da caverna. Um cientista quer reviver um deles.</i></p><ul><li><b>Fóssil Hélice</b> → Ganhe um Omanyte Lv. 2</li><li><b>Fóssil Domo</b> → Ganhe um Kabuto Lv. 2</li><li><b>Vender os dois</b> → Ganhe ₽40</li></ul></div><div class="ev"><b>Âmbar Antigo</b> <small>dia 6</small><p><i>O Museu de Pewter encontrou um âmbar com DNA de um Pokémon antigo.</i></p><ul><li><b>Reviver no laboratório</b> → Ganhe um Aerodactyl</li><li><b>Guardar</b> → Ganhe o item segurado King's Rock</li><li><b>Vender</b> → Ganhe ₽40</li></ul></div><div class="ev"><b>Meteoro em Mt. Moon</b> <small>dia 6</small><p><i>Um meteoro caiu perto de Mt. Moon. Clefairies dançam ao redor dele.</i></p><ul><li><b>Tocar o brilho</b> → Sobe o nível de um Pokémon Lv. 1</li><li><b>Seguir as Clefairies</b> → Ganhe uma Clefairy SHINY</li><li><b>Vender os destroços</b> → Ganhe ₽40</li></ul></div><div class="ev"><b>Caverna de Cerulean</b> <small>dia 6</small><p><i>Um Lapras surge das águas e diz que realiza um desejo.</i></p><ul><li><b>Desejar fama</b> → Rank da loja +2</li><li><b>Desejar riqueza</b> → Ganhe o item segurado Nugget Grande (+₽10/dia)</li><li><b>Capturar o Lapras</b> → Ganhe um Lapras</li></ul></div><div class="ev"><b>Safari Zone</b> <small>dia 6</small><p><i>Você tem uma única Safari Ball. Qual Pokémon raro vai tentar pegar?</i></p><ul><li><b>Chansey</b> → Ganhe uma Chansey</li><li><b>Kangaskhan</b> → Ganhe uma Kangaskhan</li><li><b>Tauros</b> → Ganhe um Tauros</li></ul></div><div class="ev"><b>Domador de Dragões</b> <small>dia 9</small><p><i>Lance tem dragões demais para cuidar e oferece um para você.</i></p><ul><li><b>O de chifre</b> → Ganhe um Gyarados Lv. 2 SHINY</li><li><b>O elegante</b> → Ganhe um Dragonair Lv. 2 SHINY</li><li><b>O pré-histórico</b> → Ganhe um Aerodactyl Lv. 2 SHINY</li></ul></div><div class="ev"><b>Laboratório de Cinnabar</b> <small>dia 9</small><p><i>Um cientista quer testar suas invenções em você.</i></p><ul><li><b>Recombinador</b> → Transforma seu time em Pokémon 1 raridade acima</li><li><b>Infusão de Tipo</b> → Escolha 1 de 3 tipos: um Pokémon aleatório ganha esse tipo</li><li><b>Máquina de Ouro</b> → Ganhe o item segurado Ouro Antigo (+₽25/dia)</li></ul></div><div class="ev"><b>Prof. Oak</b> <small>dia 9</small><p><i>O Prof. Oak está fazendo pesquisa de campo. Precisa de ajuda?</i></p><ul><li><b>Conselho de treino</b> → Sobe o nível de um Pokémon (até Lv. 4)</li><li><b>Perguntar da pesquisa</b> → Ganhe o item segurado Anotações de Pesquisa</li><li><b>Dicas de investimento</b> → Ganhe ₽60</li></ul></div><div class="ev"><b>Ilhas Seafoam</b> <small>dia 9</small><p><i>Três aves lendárias foram vistas em Kanto. Você só tem tempo de seguir uma.</i></p><ul><li><b>Seguir o frio</b> → Ganhe um Articuno</li><li><b>Seguir a tempestade</b> → Ganhe um Zapdos</li><li><b>Seguir o fogo</b> → Ganhe um Moltres</li></ul></div><div class="ev"><b>Enfermeira Joy</b> <small>especial</small><p><i>"Não desista agora! Seus Pokémon ainda têm muito potencial. Leve isto."</i></p><ul><li><b>+1 ❤ e um item segurado</b> → Prêmio de item segurado Super Raro</li><li><b>+1 ❤ e um Pokémon</b> → Ganhe um Pokémon Super Raro Lv. 2</li><li><b>+1 ❤ e um amuleto</b> → Ganhe a Pérola Grande (+25% HP)</li></ul></div><div class="ev"><b>Planalto Indigo</b> <small>especial</small><p><i>Falta só uma vitória para o título! Escolha um reforço para a batalha final.</i></p><ul><li><b>O gigante</b> → Ganhe um Snorlax Lv. 2 SHINY</li><li><b>O mímico</b> → Ganhe um Mr. Mime Lv. 4 SHINY</li><li><b>O amuleto</b> → Ganhe a Pérola Grande (+25% HP)</li></ul></div></section>
+<section id="combos"><h2>12. Combos de referência e balanceamento</h2>
+<table class="t">
+<tr><th>Combo</th><th>Peças</th><th>Por quê</th></tr>
+<tr><td>Fortaleza magnética <small>(bot: 63% de vitória contra o rival do dia 8)</small></td><td>Magnezone + Elétricos (Jolteon, Electivire, Raichu) + Aço (Steelix, Scizor)</td><td>Magnezone dá Armadura ao time por Elétrico e Choque aos Aços adjacentes; Electivire soma Choque por Elétrico; Raichu dobra o Choque do aliado atrás.</td></tr>
+<tr><td>Rocha armada <small>(bot: 85% de vitória contra o rival do dia 8)</small></td><td>Rhyperior + Omastar + Golem + Steelix + Kleavor</td><td>Omastar e Golem empilham Escudo; Rhyperior converte 20% do Escudo atual em Dano; Kleavor devolve o golpe como Escudo.</td></tr>
+<tr><td>Fúria espectral <small>(bot: 100% de vitória contra o rival do dia 8)</small></td><td>Annihilape + Haunter + Gengar + Marowak</td><td>Haunter nocauteia vizinhos e Gengar o oposto; cada nocaute dá Dano Espectral permanente e Crítico ao Annihilape (escala sem teto entre batalhas).</td></tr>
+<tr><td>Corte de Fada <small>(bot: 57% de vitória contra o rival do dia 8)</small></td><td>Sylveon + Clefable + Wigglytuff + Mr. Mime + Pena Fada</td><td>Sylveon espalha a Bênção para todo o time (permanente, cresce a cada batalha); Clefable ganha Bênção a cada item usado; Mr. Mime dá Proteger.</td></tr>
+<tr><td>Para-raios dragão</td><td>Dragonair + Raichu + Elétricos</td><td>Dragonair faz o Raichu aplicar "dobra o Choque do aliado atrás" duas vezes.</td></tr>
+<tr><td>Time de chuva</td><td>Politoed + Starmie + Blastoise + Lapras + Golduck</td><td>Politoed dá Multicast à linha de Água; Starmie ativa os vizinhos de Água; Lapras sobe o nível deles; a Limpeza anula os status inimigos.</td></tr>
+<tr><td>Veneno acumulado</td><td>Nidoqueen, Venomoth, Vileplume, Muk, Tentacruel, Ivysaur</td><td>Veneno nunca diminui; Vileplume e Muk convertem o Veneno inimigo em Dano/Escudo; Ivysaur cura com ele.</td></tr>
+<tr><td>Frio eterno</td><td>Glaceon + Mr. Rime + Jynx + Lapras + Cloyster</td><td>Glaceon impede o Frio inimigo de diminuir; Mr. Rime aplica Frio por Psíquico; Jynx Desativa.</td></tr>
+<tr><td>Sem habilidade</td><td>Mew + primeiros estágios + Domador</td><td>Mew dá +2 Multicast e +30% Dano a quem não tem habilidade.</td></tr>
+</table>
+<h3>Balanceamento (bot, 52.000 runs)</h3>
+<table class="t"><tr><th>Arquétipo</th><th>Runs</th><th>Vitória</th><th>Maior número</th><th>Dia 10 (mediana)</th></tr>
+<tr><td>normal</td><td>2000</td><td>32.0%</td><td>36.6B</td><td>37.5K</td></tr><tr><td>fire</td><td>2000</td><td>28.7%</td><td>31.1B</td><td>23K</td></tr><tr><td>water</td><td>2000</td><td>38.2%</td><td>18.2B</td><td>23.3K</td></tr><tr><td>electric</td><td>2000</td><td>38.4%</td><td>33.1B</td><td>22.8K</td></tr><tr><td>grass</td><td>2000</td><td>26.7%</td><td>18.6B</td><td>23.9K</td></tr><tr><td>ice</td><td>2000</td><td>45.1%</td><td>37.3B</td><td>22.9K</td></tr><tr><td>fighting</td><td>2000</td><td>29.5%</td><td>37.1B</td><td>23.6K</td></tr><tr><td>poison</td><td>2000</td><td>26.0%</td><td>819.5M</td><td>25.3K</td></tr><tr><td>ground</td><td>2000</td><td>27.1%</td><td>33.5B</td><td>23.2K</td></tr><tr><td>flying</td><td>2000</td><td>48.6%</td><td>41B</td><td>29.8K</td></tr><tr><td>psychic</td><td>2000</td><td>34.9%</td><td>40.8B</td><td>22.9K</td></tr><tr><td>bug</td><td>2000</td><td>37.4%</td><td>30B</td><td>24.5K</td></tr><tr><td>rock</td><td>2000</td><td>27.7%</td><td>40B</td><td>23.9K</td></tr><tr><td>ghost</td><td>2000</td><td>26.4%</td><td>49.1B</td><td>23.7K</td></tr><tr><td>dragon</td><td>2000</td><td>29.7%</td><td>37.6B</td><td>23.8K</td></tr><tr><td>steel</td><td>2000</td><td>28.3%</td><td>286.4B</td><td>23.2K</td></tr><tr><td>dark</td><td>2000</td><td>29.2%</td><td>321T</td><td>23K</td></tr><tr><td>fairy</td><td>2000</td><td>42.1%</td><td>36.4B</td><td>28.1K</td></tr><tr><td>fogo+veneno</td><td>2000</td><td>20.8%</td><td>479.5M</td><td>23.3K</td></tr><tr><td>agua+eletrico</td><td>2000</td><td>39.9%</td><td>21.1B</td><td>22K</td></tr><tr><td>pedra+terra</td><td>2000</td><td>25.9%</td><td>34B</td><td>22.9K</td></tr><tr><td>psiquico+fada</td><td>2000</td><td>45.9%</td><td>45.2B</td><td>26.1K</td></tr><tr><td>eletrico+aco</td><td>2000</td><td>37.8%</td><td>39.1B</td><td>23.2K</td></tr><tr><td>fantasma+lutador</td><td>2000</td><td>26.9%</td><td>33.8B</td><td>23.9K</td></tr><tr><td>inseto+voador</td><td>2000</td><td>50.3%</td><td>28.7B</td><td>27.2K</td></tr><tr><td>livre</td><td>2000</td><td>45.6%</td><td>39.2B</td><td>30.4K</td></tr></table></section>
+<p style="margin-top:24px;color:#999;font-size:8pt">Projeto fã, sem fins lucrativos, inspirado em Batomon Showdown. Pokémon © Nintendo / Game Freak / The Pokémon Company. Sprites: PokéAPI e Pokémon Showdown.</p>
+</body></html>
