@@ -1,6 +1,6 @@
 // Trilha chiptune original no estilo Game Boy: 2 canais de pulso, 1 de onda (baixo) e ruído (bateria)
 import { getMeta } from '../game/storage';
-import { audioCtx } from './sfx';
+import { audioCtx, audioHidden } from './sfx';
 
 type Ch = 'lead' | 'harm' | 'bass' | 'drums';
 interface Song { bpm: number; loop: boolean; ch: Partial<Record<Ch, string>> }
@@ -142,7 +142,7 @@ function voice(ch: Ch, e: Ev, t: number, dur: number) {
 }
 
 function tick() {
-  if (!current) return;
+  if (!current || audioHidden()) return;
   const c = audioCtx();
   if (c.state !== 'running') { current.next = c.currentTime + 0.05; return; }
   if (current.next < c.currentTime - 0.2) current.next = c.currentTime + 0.05;

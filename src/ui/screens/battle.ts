@@ -287,6 +287,8 @@ export function renderBattle(root: HTMLElement) {
   const lastCryAt = new Map<string, number>();
   const loop = (now: number) => {
     raf = requestAnimationFrame(loop);
+    // aba em segundo plano: a batalha fica pausada (não avança nem "pula" tempo ao voltar)
+    if (document.hidden) { last = now; return; }
     animate(now / 1000);
     const dt = Math.min(0.1, (now - last) / 1000);
     last = now;

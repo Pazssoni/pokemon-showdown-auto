@@ -3,17 +3,28 @@ import { getMeta } from '../game/storage';
 let ctx: AudioContext | null = null;
 let lastHit = 0;
 
+// aba em segundo plano: todo o áudio fica suspenso até a aba voltar
+let hidden = typeof document !== 'undefined' && document.hidden;
 function ac() {
   ctx ??= new AudioContext();
-  if (ctx.state === 'suspended') ctx.resume();
+  if (ctx.state === 'suspended' && !hidden) void ctx.resume();
   return ctx;
 }
 export const audioCtx = ac;
+export const audioHidden = () => hidden;
+if (typeof document !== 'undefined') {
+  document.addEventListener('visibilitychange', () => {
+    hidden = document.hidden;
+    if (!ctx) return;
+    if (hidden) void ctx.suspend();
+    else void ctx.resume();
+  });
+}
 
 // gritos clássicos (PokéAPI); limita para não virar barulho
 let lastCry = 0;
 export function cry(id: number, vol = 0.3, rate = 1, gap = 120) {
-  if (getMeta().muted) return;
+  if (getMeta().muted || hidden) return;
   const now = performance.now();
   if (now - lastCry < gap) return;
   lastCry = now;
