@@ -1,0 +1,15 @@
+{
+  "name": "Kanto Showdown",
+  "short_name": "Kanto",
+  "description": "Auto battler de Pokémon no navegador",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0b0b10",
+  "theme_color": "#17788a",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

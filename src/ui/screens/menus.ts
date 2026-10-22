@@ -37,6 +37,7 @@ export function renderTitle(root: HTMLElement) {
           h('p', null, '✨ ', h('b', null, 'Habilidades:'), ' evoluídos e espécies especiais têm uma (passe o mouse). Posição importa: frente, atrás, acima, adjacentes.'),
           h('p', null, '⚔️ ', h('b', null, 'Batalha:'), ' automática, com HP compartilhado. Depois de 30s vem a fadiga; aos 75s vence quem tiver mais HP%.'),
           h('p', null, '🎁 ', h('b', null, 'Itens segurados:'), ' cada vitória dá um presente (escolha 1 de 3). Itens da loja são usados na hora: 1 por dia.'),
+          h('p', null, '📱 ', h('b', null, 'Celular:'), ' jogue com a tela deitada. O primeiro toque abre a tela cheia; toque longo num Pokémon abre a ficha completa (como o clique direito). No iPhone, use "Adicionar à Tela de Início" para abrir em tela cheia.'),
           h('p', null, '❤️ ', h('b', null, 'Vidas:'), ' derrotas custam 1/2/3 corações conforme o dia. Com 3 ou menos, a Enfermeira Joy aparece uma vez. Encontros especiais nos dias 3, 6 e 9. Objetivo: 10 vitórias.'),
         ),
         h('button', { class: 'btn battle small', onclick: () => ov.remove() }, 'ENTENDI')));

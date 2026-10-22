@@ -1,6 +1,7 @@
 import './style.css';
 import { app } from './ui/app';
 import { setStage } from './ui/dom';
+import { fitStage, setupMobile } from './ui/mobile';
 import { music } from './ui/music';
 import { audioCtx, sfx } from './ui/sfx';
 import { renderBattle, renderVs } from './ui/screens/battle';
@@ -12,13 +13,8 @@ const stage = document.getElementById('stage')!;
 setStage(stage);
 app.root = document.getElementById('root')!;
 
-// o jogo é desenhado em 1280x720 e escalado para caber na janela
-function fit() {
-  const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
-  stage.style.transform = `scale(${s})`;
-}
-window.addEventListener('resize', fit);
-fit();
+fitStage(stage);
+setupMobile();
 
 app.register('title', renderTitle);
 app.register('trainer', renderTrainer);
