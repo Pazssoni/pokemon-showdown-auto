@@ -10,7 +10,8 @@
     "fetch-data": "node scripts/fetch-data.mjs",
     "fetch-sprites": "node scripts/fetch-sprites.mjs",
     "fetch-sounds": "node scripts/fetch-sounds.mjs",
-    "compendio": "esbuild scripts/gen-compendio.ts --bundle --platform=node --format=esm --define:import.meta.env.BASE_URL='\"/\"' --outfile=node_modules/.cache/gen-compendio.mjs --log-level=error && node node_modules/.cache/gen-compendio.mjs && chromium --headless --no-pdf-header-footer --print-to-pdf=docs/Kanto-Showdown-Compendio.pdf docs/compendio.html"
+    "compendio": "esbuild scripts/gen-compendio.ts --bundle --platform=node --format=esm --define:import.meta.env.BASE_URL='\"/\"' --outfile=node_modules/.cache/gen-compendio.mjs --log-level=error && node node_modules/.cache/gen-compendio.mjs && chromium --headless --no-pdf-header-footer --print-to-pdf=docs/Kanto-Showdown-Compendio.pdf docs/compendio.html",
+    "auditoria": "esbuild scripts/auditoria/export.ts --bundle --platform=node --define:import.meta.env.BASE_URL='\"/\"' --outfile=node_modules/.cache/auditoria-export.cjs --log-level=error && node node_modules/.cache/auditoria-export.cjs node_modules/.cache/auditoria.json && python3 scripts/auditoria/build.py docs/Kanto-Showdown-Auditoria.pdf node_modules/.cache/auditoria.json"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
