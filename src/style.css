@@ -606,7 +606,6 @@ body { font-family: 'Jersey 15', 'Pixelify Sans', ui-monospace, monospace; lette
 .target-mode .card { outline: 2px dashed #ffd84a; cursor: crosshair; }
 .rank-badge { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
 .rank-badge img { width: 24px; height: 24px; image-rendering: pixelated; }
-.formula { font-family: monospace; font-size: 11px; background: rgba(0,0,0,.08); padding: 6px; border-radius: 6px; margin-top: 6px; white-space: pre-wrap; }
 
 /* celular: aviso para girar a tela (só em telas de toque em pé) */
 #rotate { display: none; position: fixed; inset: 0; z-index: 9999; background: #0b0b10; color: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; font-family: 'Pixelify Sans', monospace; padding: 24px; }

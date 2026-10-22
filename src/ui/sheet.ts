@@ -30,14 +30,6 @@ function counterLine(u: Unit): string | null {
   return parts.length ? `Contador: ${parts.join(' · ')}` : null;
 }
 
-/** fórmula do Dano (seção 5.3) com os números deste Pokémon */
-function formulaText(st: UnitStats): string {
-  const p = st.parts;
-  const base = p.base.dmg ?? p.base.spectral ?? 0;
-  const perm = (p.perm.dmg ?? 0) + (p.perm.spectral ?? 0);
-  return `(base ${fmt(base)} + permanente ${fmt(perm)} + batalha) × (1 + ${Math.round(p.pct * 100)}%) × ${p.mult.toFixed(2)} × nível ${p.level}` +
-    `\nOrçamento ${Math.round(p.budget)} · ${st.types.length} tipo(s)`;
-}
 
 /** destaca gatilhos ("Ao atacar:") e palavras-chave de stats no texto da habilidade */
 export function richAbility(text: string): Node[] {
@@ -102,7 +94,6 @@ export function unitPanel(u: Unit, ctx: StatCtx, extra: { price?: number; sell?:
       ab.none ? null : h('div', { class: 'ab-name' }, ab.name),
       h('div', { class: 'ab-text' }, richAbility(ab.desc(scaler(u.level, u.shiny ? 1.2 : 1)))),
       ab.none && evoRuleText(u.species) ? h('div', { class: 'ab-evo' }, evoRuleText(u.species)!) : null),
-    h('div', { class: 'formula' }, formulaText(st)),
     h('div', { class: 'sheet-foot' },
       counterLine(u) ? h('div', null, counterLine(u)!) : null,
       extra.progress ? h('div', null, extra.progress) : null,
